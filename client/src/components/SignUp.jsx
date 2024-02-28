@@ -8,12 +8,10 @@ const genders = [
 ];
 const timeAvailabilities = ["Weekdays", "Weekends", "Specific Hours"];
 const volunteer_types = ["On-site", "Remote", "Events"];
-
 const SignUp = () => {
   const [user, setUser] = useState(0);
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const formData = new FormData(e.currentTarget);
     const volunteerTypes = Array.from(formData.getAll("volunteer_type"));
     formData.delete("volunteer_type");
@@ -21,7 +19,6 @@ const SignUp = () => {
       ...Object.fromEntries(formData),
       volunteer_type: volunteerTypes,
     };
-
     console.log(newUser);
     setUser(user + 1);
     e.currentTarget.reset();
@@ -163,7 +160,6 @@ const SignUp = () => {
                   <span className="text-xl font-semibold text-gray-900">
                     Preferred Type of Volunteer Work
                   </span>
-
                   <div className="mt-6 space-y-6">
                     {volunteer_types.map((volunteer_type) => {
                       return (
@@ -193,7 +189,6 @@ const SignUp = () => {
                   <span className="text-xl font-semibold text-gray-900">
                     Time Availability
                   </span>
-
                   <div className="mt-6 space-y-6 justify-around">
                     {timeAvailabilities.map((timeAvailability) => {
                       return (
@@ -256,7 +251,6 @@ const SignUp = () => {
                       </button>
                     </div>
                   </div>
-
                   <div className="w-full flex flex-col items-center">
                     <label
                       htmlFor="file-uploaded"
