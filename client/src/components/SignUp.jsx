@@ -7,34 +7,7 @@ const genders = [
   "Prefer not to say",
 ];
 const timeAvailabilities = ["Weekdays", "Weekends", "Specific Hours"];
-const indianStates = [
-  "-Select-",
-  "Maharashtra",
-  "Punjab",
-  "Gujarat",
-  "Rajasthan",
-  "Kerala",
-];
-const interests_expertises = ["Environmental", "Health-Care", "Education"];
 const volunteer_types = ["On-site", "Remote", "Events"];
-const indianStates_cities = [
-  "-Select-",
-  "Pune",
-  "Akurdi",
-  "Ravet",
-  "PCMC",
-  "Nigdi",
-];
-
-const departments = [
-  "-Select-",
-  "Mechanical Engineering",
-  "Civil Engineering",
-  "Electronics and Telecommunication",
-  "Information Technology",
-  "Computer Engineering",
-];
-const graduation_years = ["-Select-", "2026", "2027", "2028", "2029", "2030"];
 
 const SignUp = () => {
   const [user, setUser] = useState(0);
@@ -45,8 +18,8 @@ const SignUp = () => {
     const volunteerTypes = Array.from(formData.getAll("volunteer_type"));
     formData.delete("volunteer_type");
     const newUser = {
-      ...Object.fromEntries(formData), // Convert form data to object
-      volunteer_type: volunteerTypes, // Add volunteer_types as array
+      ...Object.fromEntries(formData),
+      volunteer_type: volunteerTypes,
     };
 
     console.log(newUser);
@@ -63,13 +36,13 @@ const SignUp = () => {
         </div>
         <div>
           <form className="h-full m-8 rounded-xl" onSubmit={handleSubmit}>
-            <div className="flex flex-col md:flex-row md:grow-0 sm:m-3 p-3 border-t-2 border-gray-200">
+            <div className="flex flex-col md:flex-row md:grow-0 sm:m-3 py-12 border-t-2 border-gray-200">
               <div className="w-full sm:w-1/3 sm:h-auto text-center">
                 Personal Information
               </div>
               <div className="w-full flex flex-wrap md:w-2/3">
                 <div className="flex flex-col w-full sm:flex-row  flex-wrap">
-                  <div className=" grow sm:grow-0 md:w-1/2 lg:w-1/3 px-2 my-3">
+                  <div className=" grow sm:grow-0 md:w-1/2 px-2 my-3">
                     <label
                       htmlFor="first_name"
                       className="col-span-1 block text-sm font-medium text-left m-2"
@@ -87,25 +60,7 @@ const SignUp = () => {
                       />
                     </div>
                   </div>
-                  <div className="grow sm:grow-0  md:w-1/2 lg:w-1/3 px-2 my-3">
-                    <label
-                      htmlFor="middle_name"
-                      className="col-span-1 block text-sm font-medium text-left m-2"
-                    >
-                      Middle Name
-                    </label>
-                    <div>
-                      <input
-                        id="middle_name"
-                        name="middle_name"
-                        type="text"
-                        autoComplete="text"
-                        required
-                        className="w-full border-gray-300 rounded-lg shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
-                      />
-                    </div>
-                  </div>
-                  <div className=" grow sm:grow-0 md:w-1/2 lg:w-1/3 px-2 my-3">
+                  <div className=" grow sm:grow-0 md:w-1/2 px-2 my-3">
                     <label
                       htmlFor="last_name"
                       className="col-span-1 block text-sm font-medium text-left m-2"
@@ -199,148 +154,149 @@ const SignUp = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col md:flex-row md:grow-0 sm:m-3 p-3 border-t-2 border-gray-200">
+            <div className="flex flex-col md:flex-row md:grow-0 sm:m-3 py-12 border-t-2 border-gray-200">
               <div className="w-full sm:w-1/3 sm:h-auto text-center">
                 Volunteer Preferences
               </div>
-              <div className="w-full flex flex-wrap sm:w-2/3">
-                <div className="space-x-12 flex flex-grow">
-                  <div className="flex flex-col">
-                    <label className="text-sm font-semibold text-gray-900">
-                      Areas of Interest/Expertise
-                    </label>
-                    <div>Yet to be coded.</div>
-                  </div>
-                  <div className="flex flex-col">
-                    <label className="text-sm font-semibold text-gray-900">
-                      Preferred Type of Volunteer Work
-                    </label>
+              <div className="w-full flex flex-wrap items-center sm:w-2/3">
+                <div className="w-full flex flex-col sm:w-2/3 md:grow-0 lg:w-1/2 px-2 my-3">
+                  <span className="text-xl font-semibold text-gray-900">
+                    Preferred Type of Volunteer Work
+                  </span>
 
-                    <div className="mt-6 space-y-6">
-                      {volunteer_types.map((volunteer_type) => {
-                        return (
-                          <div className="flex items-center gap-x-3">
-                            <input
-                              id={`${volunteer_type}`}
-                              name="volunteer_type"
-                              type="checkbox"
-                              value={volunteer_type}
-                              className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                            />
-                            <label
-                              htmlFor="volunteer_type"
-                              className="block text-sm font-medium leading-6 text-gray-900"
-                            >
-                              {volunteer_type}
-                            </label>
-                          </div>
-                        );
-                      })}
-                    </div>
+                  <div className="mt-6 space-y-6">
+                    {volunteer_types.map((volunteer_type) => {
+                      return (
+                        <div
+                          key={volunteer_type}
+                          className="flex px-12 gap-x-3"
+                        >
+                          <input
+                            id={volunteer_type}
+                            name="volunteer_type"
+                            type="checkbox"
+                            value={volunteer_type}
+                            className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                          />
+                          <label
+                            htmlFor={volunteer_type}
+                            className="block text-lg font-medium leading-6 text-gray-900"
+                          >
+                            {volunteer_type}
+                          </label>
+                        </div>
+                      );
+                    })}
                   </div>
-                  <div className="flex flex-col">
-                    <label className="text-sm font-semibold text-gray-900">
-                      Time Availability
-                    </label>
+                </div>
+                <div className="w-full flex flex-col sm:w-2/3 md:grow-0 lg:w-1/2 px-2 my-3">
+                  <span className="text-xl font-semibold text-gray-900">
+                    Time Availability
+                  </span>
 
-                    <div className="mt-6 space-y-6">
-                      {timeAvailabilities.map((timeAvailability) => {
-                        return (
-                          <div className="flex items-center gap-x-3">
-                            <input
-                              id={`${timeAvailability}`}
-                              name="timeAvailability"
-                              type="radio"
-                              value={timeAvailability}
-                              className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                            />
-                            <label
-                              htmlFor="timeAvailability"
-                              className="block text-sm font-medium leading-6 text-gray-900"
-                            >
-                              {timeAvailability}
-                            </label>
-                          </div>
-                        );
-                      })}
-                    </div>
+                  <div className="mt-6 space-y-6 justify-around">
+                    {timeAvailabilities.map((timeAvailability) => {
+                      return (
+                        <div
+                          key={timeAvailability}
+                          className="flex px-12 gap-x-3"
+                        >
+                          <input
+                            id={timeAvailability}
+                            name="timeAvailability"
+                            type="radio"
+                            value={timeAvailability}
+                            className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                          />
+                          <label
+                            htmlFor={timeAvailability}
+                            className="block text-lg font-medium leading-6 text-gray-900"
+                          >
+                            {timeAvailability}
+                          </label>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
             </div>
-            <div className="flex flex-col md:flex-row md:grow-0 sm:m-3 p-3 border-y-2 border-gray-200">
+            <div className="flex flex-col md:flex-row md:grow-0 sm:m-3 py-12 border-y-2 border-gray-200">
               <div className="w-full sm:w-1/3 sm:h-auto text-center">
                 Profile Credentials
               </div>
-              <div className="w-full flex flex-wrap md:w-2/3">
-                <div className="col-span-full">
-                  <label
-                    htmlFor="photo"
-                    className="block text-sm font-medium leading-6 text-gray-900"
-                  >
-                    Photo
-                  </label>
-                  <div className="mt-2 flex items-center gap-x-3">
-                    <svg
-                      className="h-12 w-12 text-gray-300"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      aria-hidden="true"
+              <div className="w-full items-center flex flex-wrap md:w-2/3">
+                <div className="w-full flex flex-col sm:flex-row">
+                  <div className="w-full flex flex-col items-center">
+                    <label
+                      htmlFor="photo-uploaded"
+                      className="block text-sm font-medium leading-6 text-gray-900"
                     >
-                      <path
-                        fill-rule="evenodd"
-                        d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                    <button
-                      type="button"
-                      className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                    >
-                      Change
-                    </button>
-                  </div>
-                </div>
-
-                <div className="col-span-full">
-                  <label
-                    htmlFor="cover-photo"
-                    className="block text-sm font-medium leading-6 text-gray-900"
-                  >
-                    Cover photo
-                  </label>
-                  <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-                    <div className="text-center">
+                      Photo
+                    </label>
+                    <div className="mt-2 flex flex-col items-center gap-x-3">
                       <svg
-                        className="mx-auto h-12 w-12 text-gray-300"
+                        className="h-52 w-52 text-gray-300"
                         viewBox="0 0 24 24"
                         fill="currentColor"
                         aria-hidden="true"
                       >
                         <path
-                          fill-rule="evenodd"
-                          d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z"
-                          clip-rule="evenodd"
+                          fillRule="evenodd"
+                          d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+                          clipRule="evenodd"
                         />
                       </svg>
-                      <div className="mt-4 flex text-sm leading-6 text-gray-600">
-                        <label
-                          htmlFor="file-upload"
-                          className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                      <button
+                        id="photo-uploaded"
+                        type="button"
+                        className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                      >
+                        Change
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="w-full flex flex-col items-center">
+                    <label
+                      htmlFor="file-uploaded"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      Cover photo
+                    </label>
+                    <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+                      <div className="text-center">
+                        <svg
+                          className="mx-auto h-12 w-12 text-gray-300"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          aria-hidden="true"
                         >
-                          <span>Upload a file</span>
-                          <input
-                            id="file-upload"
-                            name="file-upload"
-                            type="file"
-                            className="sr-only"
+                          <path
+                            fillRule="evenodd"
+                            d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z"
+                            clipRule="evenodd"
                           />
-                        </label>
-                        <p className="pl-1">or drag and drop</p>
+                        </svg>
+                        <div className="mt-4 flex text-sm leading-6 text-gray-600">
+                          <label
+                            htmlFor="file-uploaded"
+                            className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                          >
+                            <span>Upload a file</span>
+                            <input
+                              id="file-uploaded"
+                              name="file-upload"
+                              type="file"
+                              className="sr-only"
+                            />
+                          </label>
+                          <p className="pl-1">or drag and drop</p>
+                        </div>
+                        <p className="text-xs leading-5 text-gray-600">
+                          PNG, JPG, GIF up to 10MB
+                        </p>
                       </div>
-                      <p className="text-xs leading-5 text-gray-600">
-                        PNG, JPG, GIF up to 10MB
-                      </p>
                     </div>
                   </div>
                 </div>
@@ -356,7 +312,7 @@ const SignUp = () => {
                       id="password"
                       name="password"
                       type="password"
-                      autoComplete="password"
+                      autoComplete="new-password"
                       required
                       className="w-full border-gray-300 rounded-lg shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
                     />
@@ -374,7 +330,7 @@ const SignUp = () => {
                       id="confirm_password"
                       name="confirm_password"
                       type="password"
-                      autoComplete="password"
+                      autoComplete="new-password"
                       required
                       className="w-full border-gray-300 rounded-lg shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
                     />
@@ -382,20 +338,23 @@ const SignUp = () => {
                 </div>
               </div>
             </div>
-            <div className="flex w-full justify-center">
+            <div className="flex w-full justify-evenly">
               <button
                 type="button"
-                className="p-2 border border-black bg-white"
+                className="p-2 border border-black text-white font-bold rounded-lg bg-cyan-600"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="p-2 border border-black bg-white"
+                className="p-2 border border-black text-white font-bold rounded-lg bg-cyan-600"
               >
                 Submit
               </button>
-              <button type="reset" className="p-2 border border-black bg-white">
+              <button
+                type="reset"
+                className="p-2 border border-black text-white font-bold rounded-lg bg-cyan-600"
+              >
                 Reset Form
               </button>
             </div>
