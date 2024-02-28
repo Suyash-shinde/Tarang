@@ -7,7 +7,6 @@ const genders = [
   "Prefer not to say",
 ];
 const timeAvailabilities = ["Weekdays", "Weekends", "Specific Hours"];
-const uniqueId = `timeAvailability_${index}`;
 const indianStates = [
   "-Select-",
   "Maharashtra",
@@ -334,14 +333,14 @@ const SignUp = () => {
                         return (
                           <div className="flex items-center gap-x-3">
                             <input
-                              id={uniqueId}
+                              id="volunteer_type"
                               name="volunteer_type"
                               type="checkbox"
                               value={volunteer_type}
                               className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
                             />
                             <label
-                              for={uniqueId}
+                              for="volunteer_type"
                               className="block text-sm font-medium leading-6 text-gray-900"
                             >
                               {volunteer_type}
