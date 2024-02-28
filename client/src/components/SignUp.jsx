@@ -25,24 +25,24 @@ const SignUp = () => {
   };
   return (
     <>
-      <div className="bg-gradient-to-r from-cyan-500 to-blue-500 h-auto text-slate-700">
+      <div className="h-auto bg-gradient-to-r from-cyan-500 to-blue-500 text-slate-700">
         <div className="flex justify-center">
-          <span className="text-center text-3xl mt-3 font-bold font-sans">
+          <span className="mt-3 font-sans text-3xl font-bold text-center">
             Registration
           </span>
         </div>
         <div>
           <form className="h-full m-8 rounded-xl" onSubmit={handleSubmit}>
-            <div className="flex flex-col md:flex-row md:grow-0 sm:m-3 py-12 border-t-2 border-gray-200">
-              <div className="w-full sm:w-1/3 sm:h-auto text-center">
+            <div className="flex flex-col py-12 border-t-2 border-gray-200 md:flex-row md:grow-0 sm:m-3">
+              <div className="w-full text-center sm:w-1/3 sm:h-auto">
                 Personal Information
               </div>
-              <div className="w-full flex flex-wrap md:w-2/3">
-                <div className="flex flex-col w-full sm:flex-row  flex-wrap">
-                  <div className=" grow sm:grow-0 md:w-1/2 px-2 my-3">
+              <div className="flex flex-wrap w-full md:w-2/3">
+                <div className="flex flex-col flex-wrap w-full sm:flex-row">
+                  <div className="px-2 my-3 grow sm:grow-0 md:w-1/2">
                     <label
                       htmlFor="first_name"
-                      className="col-span-1 block text-sm font-medium text-left m-2"
+                      className="block col-span-1 m-2 text-sm font-medium text-left"
                     >
                       First Name
                     </label>
@@ -53,14 +53,14 @@ const SignUp = () => {
                         type="text"
                         autoComplete="text"
                         required
-                        className="w-full  border-gray-300 rounded-lg shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
+                        className="w-full border-gray-300 rounded-lg shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
                       />
                     </div>
                   </div>
-                  <div className=" grow sm:grow-0 md:w-1/2 px-2 my-3">
+                  <div className="px-2 my-3 grow sm:grow-0 md:w-1/2">
                     <label
                       htmlFor="last_name"
-                      className="col-span-1 block text-sm font-medium text-left m-2"
+                      className="block col-span-1 m-2 text-sm font-medium text-left"
                     >
                       Last Name
                     </label>
@@ -76,10 +76,10 @@ const SignUp = () => {
                     </div>
                   </div>
                 </div>
-                <div className="w-full sm:w2/3 md:grow-0 lg:w-1/2 px-2 my-3">
+                <div className="w-full px-2 my-3 sm:w2/3 md:grow-0 lg:w-1/2">
                   <label
                     htmlFor="dob"
-                    className="col-span-1 block text-sm font-medium text-left m-2"
+                    className="block col-span-1 m-2 text-sm font-medium text-left"
                   >
                     Date of Birth
                   </label>
@@ -94,10 +94,10 @@ const SignUp = () => {
                     />
                   </div>
                 </div>
-                <div className="w-full md:grow-0 sm:w-1/2 px-2 my-3">
+                <div className="w-full px-2 my-3 md:grow-0 sm:w-1/2">
                   <label
                     htmlFor="gender"
-                    className="block text-sm font-medium m-2 text-left col-span-1"
+                    className="block col-span-1 m-2 text-sm font-medium text-left"
                   >
                     Gender
                   </label>
@@ -113,10 +113,10 @@ const SignUp = () => {
                     </select>
                   </div>
                 </div>
-                <div className="w-full sm:w-2/3 md:grow-0 lg:w-1/2 px-2 my-3">
+                <div className="w-full px-2 my-3 sm:w-2/3 md:grow-0 lg:w-1/2">
                   <label
                     htmlFor="mobile"
-                    className="w-full block text-sm font-medium m-2 text-left"
+                    className="block w-full m-2 text-sm font-medium text-left"
                   >
                     Mobile no.
                   </label>
@@ -131,10 +131,10 @@ const SignUp = () => {
                     />
                   </div>
                 </div>
-                <div className="w-full sm:w-2/3 md:grow-0 lg:w-1/2 px-2 my-3">
+                <div className="w-full px-2 my-3 sm:w-2/3 md:grow-0 lg:w-1/2">
                   <label
                     htmlFor="email"
-                    className="col-span-1 block text-sm font-medium text-left m-2"
+                    className="block col-span-1 m-2 text-sm font-medium text-left"
                   >
                     Email address
                   </label>
@@ -151,12 +151,12 @@ const SignUp = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col md:flex-row md:grow-0 sm:m-3 py-12 border-t-2 border-gray-200">
-              <div className="w-full sm:w-1/3 sm:h-auto text-center">
+            <div className="flex flex-col py-12 border-t-2 border-gray-200 md:flex-row md:grow-0 sm:m-3">
+              <div className="w-full text-center sm:w-1/3 sm:h-auto">
                 Volunteer Preferences
               </div>
-              <div className="w-full flex flex-wrap items-center sm:w-2/3">
-                <div className="w-full flex flex-col sm:w-2/3 md:grow-0 lg:w-1/2 px-2 my-3">
+              <div className="flex flex-wrap items-center w-full sm:w-2/3">
+                <div className="flex flex-col w-full px-2 my-3 sm:w-2/3 md:grow-0 lg:w-1/2">
                   <span className="text-xl font-semibold text-gray-900">
                     Preferred Type of Volunteer Work
                   </span>
@@ -172,7 +172,7 @@ const SignUp = () => {
                             name="volunteer_type"
                             type="checkbox"
                             value={volunteer_type}
-                            className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                            className="w-4 h-4 text-indigo-600 border-gray-300 focus:ring-indigo-600"
                           />
                           <label
                             htmlFor={volunteer_type}
@@ -185,11 +185,11 @@ const SignUp = () => {
                     })}
                   </div>
                 </div>
-                <div className="w-full flex flex-col sm:w-2/3 md:grow-0 lg:w-1/2 px-2 my-3">
+                <div className="flex flex-col w-full px-2 my-3 sm:w-2/3 md:grow-0 lg:w-1/2">
                   <span className="text-xl font-semibold text-gray-900">
                     Time Availability
                   </span>
-                  <div className="mt-6 space-y-6 justify-around">
+                  <div className="justify-around mt-6 space-y-6">
                     {timeAvailabilities.map((timeAvailability) => {
                       return (
                         <div
@@ -201,7 +201,7 @@ const SignUp = () => {
                             name="timeAvailability"
                             type="radio"
                             value={timeAvailability}
-                            className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                            className="w-4 h-4 text-indigo-600 border-gray-300 focus:ring-indigo-600"
                           />
                           <label
                             htmlFor={timeAvailability}
@@ -216,22 +216,22 @@ const SignUp = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col md:flex-row md:grow-0 sm:m-3 py-12 border-y-2 border-gray-200">
-              <div className="w-full sm:w-1/3 sm:h-auto text-center">
+            <div className="flex flex-col py-12 border-gray-200 md:flex-row md:grow-0 sm:m-3 border-y-2">
+              <div className="w-full text-center sm:w-1/3 sm:h-auto">
                 Profile Credentials
               </div>
-              <div className="w-full items-center flex flex-wrap md:w-2/3">
-                <div className="w-full flex flex-col sm:flex-row">
-                  <div className="w-full flex flex-col items-center">
+              <div className="flex flex-wrap items-center w-full md:w-2/3">
+                <div className="flex flex-col w-full sm:flex-row">
+                  <div className="flex flex-col items-center w-full">
                     <label
                       htmlFor="photo-uploaded"
                       className="block text-sm font-medium leading-6 text-gray-900"
                     >
                       Photo
                     </label>
-                    <div className="mt-2 flex flex-col items-center gap-x-3">
+                    <div className="flex flex-col items-center mt-2 gap-x-3">
                       <svg
-                        className="h-52 w-52 text-gray-300"
+                        className="text-gray-300 h-52 w-52"
                         viewBox="0 0 24 24"
                         fill="currentColor"
                         aria-hidden="true"
@@ -251,17 +251,17 @@ const SignUp = () => {
                       </button>
                     </div>
                   </div>
-                  <div className="w-full flex flex-col items-center">
+                  <div className="flex flex-col items-center w-full">
                     <label
                       htmlFor="file-uploaded"
                       className="block text-sm font-medium leading-6 text-gray-900"
                     >
                       Cover photo
                     </label>
-                    <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+                    <div className="flex justify-center px-6 py-10 mt-2 border border-dashed rounded-lg border-gray-900/25">
                       <div className="text-center">
                         <svg
-                          className="mx-auto h-12 w-12 text-gray-300"
+                          className="w-12 h-12 mx-auto text-gray-300"
                           viewBox="0 0 24 24"
                           fill="currentColor"
                           aria-hidden="true"
@@ -272,10 +272,10 @@ const SignUp = () => {
                             clipRule="evenodd"
                           />
                         </svg>
-                        <div className="mt-4 flex text-sm leading-6 text-gray-600">
+                        <div className="flex mt-4 text-sm leading-6 text-gray-600">
                           <label
                             htmlFor="file-uploaded"
-                            className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                            className="relative font-semibold text-indigo-600 bg-white rounded-md cursor-pointer focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
                           >
                             <span>Upload a file</span>
                             <input
@@ -294,10 +294,10 @@ const SignUp = () => {
                     </div>
                   </div>
                 </div>
-                <div className="w-full sm:w-2/3 md:grow-0 lg:w-1/2 px-2 my-3">
+                <div className="w-full px-2 my-3 sm:w-2/3 md:grow-0 lg:w-1/2">
                   <label
                     htmlFor="password"
-                    className="block text-sm font-medium m-2 text-left"
+                    className="block m-2 text-sm font-medium text-left"
                   >
                     Password
                   </label>
@@ -312,10 +312,10 @@ const SignUp = () => {
                     />
                   </div>
                 </div>
-                <div className="w-full sm:w-2/3 md:grow-0 lg:w-1/2 px-2 my-3">
+                <div className="w-full px-2 my-3 sm:w-2/3 md:grow-0 lg:w-1/2">
                   <label
                     htmlFor="confirm_password"
-                    className="block text-sm font-medium m-2 text-left"
+                    className="block m-2 text-sm font-medium text-left"
                   >
                     Confirm Password
                   </label>
@@ -335,19 +335,19 @@ const SignUp = () => {
             <div className="flex w-full justify-evenly">
               <button
                 type="button"
-                className="p-2 border border-black text-white font-bold rounded-lg bg-cyan-600"
+                className="p-2 font-bold text-white border border-black rounded-lg bg-cyan-600"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="p-2 border border-black text-white font-bold rounded-lg bg-cyan-600"
+                className="p-2 font-bold text-white border border-black rounded-lg bg-cyan-600"
               >
                 Submit
               </button>
               <button
                 type="reset"
-                className="p-2 border border-black text-white font-bold rounded-lg bg-cyan-600"
+                className="p-2 font-bold text-white border border-black rounded-lg bg-cyan-600"
               >
                 Reset Form
               </button>
