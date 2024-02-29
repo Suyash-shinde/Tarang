@@ -59,7 +59,7 @@ function Login() {
             </div>
 
             <div className="text-center text-gray-400">
-              Dont'have an account?
+              Don't have an account?
               <span className="font-bold text-black"> Sign up for free</span>
             </div>
           </div>
