@@ -38,7 +38,7 @@ const SignUp = () => {
               onSubmit={handleSubmit}
             >
               <div className="flex flex-col py-12 border-t-2 border-gray-300 md:space-y-6 md:flex-row md:grow-0 sm:m-3">
-                <div className="w-full my-6 text-2xl font-bold md:px-6 sm:w-1/3 sm:h-auto">
+                <div className="w-full my-6 text-3xl font-bold md:px-6 md:w-1/3 sm:h-auto">
                   Personal Information
                 </div>
                 <div className="flex flex-wrap w-full md:w-2/3">
@@ -135,7 +135,7 @@ const SignUp = () => {
                       />
                     </div>
                   </div>
-                  <div className="my-3 md:px-6 grow sm:grow-0 md:w-full lg:w-1/2">
+                  <div className="my-6 md:px-6 grow sm:grow-0 md:w-full lg:w-1/2">
                     <label
                       htmlFor="email"
                       className="block col-span-1 my-2 text-base font-medium text-left"
@@ -156,11 +156,11 @@ const SignUp = () => {
                 </div>
               </div>
               <div className="flex flex-col py-12 border-t-2 border-gray-300 md:flex-row md:grow-0 sm:m-3">
-                <div className="w-full my-6 text-2xl font-bold md:px-6 sm:w-1/3 sm:h-auto">
+                <div className="w-full my-6 text-3xl font-bold md:px-6 md:w-1/3 sm:h-auto">
                   Volunteer Preferences
                 </div>
-                <div className="flex flex-wrap items-center w-full mt-6 sm:mt-0 sm:w-2/3">
-                  <div className="flex flex-col w-full sm:w-2/3 md:grow-0 lg:w-1/2">
+                <div className="flex flex-wrap items-center w-full mt-6 sm:mt-0 md:w-2/3">
+                  <div className="flex flex-col w-full sm:w-2/3 md:grow-0 md:px-6 lg:w-1/2">
                     <div className="text-lg font-semibold text-gray-900">
                       Preferred Type of Volunteer Work
                     </div>
@@ -189,7 +189,7 @@ const SignUp = () => {
                       })}
                     </div>
                   </div>
-                  <div className="flex flex-col w-full mt-6 sm:w-2/3 md:grow-0 lg:w-1/2">
+                  <div className="flex flex-col w-full mt-6 sm:w-2/3 md:grow-0 md:px-6 lg:w-1/2">
                     <div className="text-lg font-semibold text-gray-900">
                       Time Availability
                     </div>
@@ -222,7 +222,7 @@ const SignUp = () => {
                 </div>
               </div>
               <div className="flex flex-col py-12 border-gray-300 md:space-y-6 md:flex-row md:grow-0 sm:m-3 border-y-2">
-                <div className="w-full my-6 text-2xl font-bold md:px-6 sm:w-1/3 sm:h-auto">
+                <div className="w-full my-6 text-3xl font-bold md:px-6 sm:w-1/3 sm:h-auto">
                   Profile Credentials
                 </div>
                 <div className="flex flex-wrap items-center w-full my-6 md:space-y-6 md:w-2/3">
