@@ -25,8 +25,8 @@ const SignUp = () => {
   };
   return (
     <>
-      <div className="md:p-20 bg-emerald-500">
-        <div className="h-auto md:rounded-3xl bg-slate-100 text-slate-700">
+      <div className="md:p-20 bg-slate-200">
+        <div className="h-auto shadow-xl bg-slate-50 md:rounded-3xl text-slate-700">
           <div className="flex justify-center">
             <span className="mt-12 font-sans text-5xl font-bold text-center">
               Registration
