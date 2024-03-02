@@ -42,45 +42,43 @@ const SignUp = () => {
                   Personal Information
                 </div>
                 <div className="flex flex-wrap w-full md:w-2/3">
-                  <div className="flex flex-col flex-wrap w-full sm:flex-row">
-                    <div className="my-3 md:px-6 grow sm:grow-0 md:w-full lg:w-1/2">
-                      <label
-                        htmlFor="first_name"
-                        className="block col-span-1 my-2 text-base font-medium text-left"
-                      >
-                        First Name
-                      </label>
-                      <div>
-                        <input
-                          id="first_name"
-                          name="first_name"
-                          type="text"
-                          autoComplete="text"
-                          required
-                          className="w-full border-gray-300 rounded-lg shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
-                        />
-                      </div>
-                    </div>
-                    <div className="my-3 md:px-6 grow sm:grow-0 md:w-full lg:w-1/2">
-                      <label
-                        htmlFor="last_name"
-                        className="block col-span-1 my-2 text-base font-medium text-left"
-                      >
-                        Last Name
-                      </label>
-                      <div>
-                        <input
-                          id="last_name"
-                          name="last_name"
-                          type="text"
-                          autoComplete="text"
-                          required
-                          className="w-full border-gray-300 rounded-lg shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
-                        />
-                      </div>
+                  <div className="mt-6 md:mt-0 md:px-6 grow sm:grow-0 md:w-full lg:w-1/2">
+                    <label
+                      htmlFor="first_name"
+                      className="block col-span-1 my-2 text-base font-medium text-left"
+                    >
+                      First Name
+                    </label>
+                    <div>
+                      <input
+                        id="first_name"
+                        name="first_name"
+                        type="text"
+                        autoComplete="text"
+                        required
+                        className="w-full border-gray-300 rounded-lg shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
+                      />
                     </div>
                   </div>
-                  <div className="w-full my-6 md:px-6 md:grow-0 lg:w-1/2">
+                  <div className="mt-6 md:mt-0 md:px-6 grow sm:grow-0 md:w-full lg:w-1/2">
+                    <label
+                      htmlFor="last_name"
+                      className="block col-span-1 my-2 text-base font-medium text-left"
+                    >
+                      Last Name
+                    </label>
+                    <div>
+                      <input
+                        id="last_name"
+                        name="last_name"
+                        type="text"
+                        autoComplete="text"
+                        required
+                        className="w-full border-gray-300 rounded-lg shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
+                      />
+                    </div>
+                  </div>
+                  <div className="w-full mt-6 md:px-6 md:grow-0 lg:w-1/2">
                     <label
                       htmlFor="dob"
                       className="block col-span-1 my-2 text-base font-medium text-left"
@@ -98,7 +96,7 @@ const SignUp = () => {
                       />
                     </div>
                   </div>
-                  <div className="w-full my-6 md:px-6 md:grow-0 lg:w-1/2">
+                  <div className="w-full mt-6 md:px-6 md:grow-0 lg:w-1/2">
                     <label
                       htmlFor="gender"
                       className="block col-span-1 my-2 text-base font-medium text-left"
@@ -117,7 +115,7 @@ const SignUp = () => {
                       </select>
                     </div>
                   </div>
-                  <div className="w-full my-6 md:px-6 md:grow-0 lg:w-1/2">
+                  <div className="w-full mt-6 md:px-6 md:grow-0 lg:w-1/2">
                     <label
                       htmlFor="mobile"
                       className="block w-full my-2 text-base font-medium text-left"
@@ -135,7 +133,7 @@ const SignUp = () => {
                       />
                     </div>
                   </div>
-                  <div className="my-6 md:px-6 grow sm:grow-0 md:w-full lg:w-1/2">
+                  <div className="mt-6 md:px-6 grow sm:grow-0 md:w-full lg:w-1/2">
                     <label
                       htmlFor="email"
                       className="block col-span-1 my-2 text-base font-medium text-left"
@@ -221,13 +219,13 @@ const SignUp = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col py-12 border-gray-300 md:space-y-6 md:flex-row md:grow-0 sm:m-3 border-y-2">
+              <div className="flex flex-col py-12 border-gray-300 md:flex-row md:grow-0 sm:m-3 border-y-2">
                 <div className="w-full my-6 text-3xl font-bold md:px-6 sm:w-1/3 sm:h-auto">
                   Profile Credentials
                 </div>
-                <div className="flex flex-wrap items-center w-full my-6 md:space-y-6 md:w-2/3">
+                <div className="flex flex-wrap items-center w-full md:w-2/3">
                   <div className="flex flex-col w-full lg:flex-row">
-                    <div className="flex flex-col items-center w-full">
+                    <div className="flex flex-col items-center w-full mt-6">
                       <label
                         htmlFor="photo-uploaded"
                         className="block text-base font-medium leading-6 text-gray-900"
@@ -299,7 +297,7 @@ const SignUp = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="my-3 md:px-6 grow sm:grow-0 md:w-full lg:w-1/2">
+                  <div className="mt-6 md:px-6 grow sm:grow-0 md:w-full lg:w-1/2">
                     <label
                       htmlFor="password"
                       className="block my-2 text-base font-medium text-left"
@@ -317,7 +315,7 @@ const SignUp = () => {
                       />
                     </div>
                   </div>
-                  <div className="my-3 md:px-6 grow sm:grow-0 md:w-full lg:w-1/2">
+                  <div className="mt-6 md:px-6 grow sm:grow-0 md:w-full lg:w-1/2">
                     <label
                       htmlFor="confirm_password"
                       className="block my-2 text-base font-medium text-left"
