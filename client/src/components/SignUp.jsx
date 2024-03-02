@@ -160,7 +160,7 @@ const SignUp = () => {
                   Volunteer Preferences
                 </div>
                 <div className="flex flex-wrap items-center w-full mt-6 sm:mt-0 md:w-2/3">
-                  <div className="flex flex-col w-full sm:w-2/3 md:grow-0 md:px-6 lg:w-1/2">
+                  <div className="flex flex-col w-full mt-6 sm:w-2/3 md:grow-0 md:px-6 lg:w-1/2">
                     <div className="text-lg font-semibold text-gray-900">
                       Preferred Type of Volunteer Work
                     </div>
