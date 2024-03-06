@@ -2,9 +2,29 @@ import { Schema } from "mongoose";
 import mongoose from "mongoose";
 
 const userSchema = new Schema({
-    username:{
-        type: String,
+    firstName:{
+        type:String,
         required:true,
+        unique:true,
+        lowercase:true,
+    },
+    email:{
+        type:String,
+        required:true,
+        unique:true,
+        lowercase:true,
+        trim:true,
+    },
+    mobileNumber:{
+        type:String,
+        required:true,
+        unique:true,
+        lowercase:true,
+        trim:true,
+    },
+    password:{
+        type:String,
+        required:[true,'Password is required']
     },
 })
 
