@@ -7,6 +7,8 @@ function Login() {
   });
   const handleSubmit = (e) => {
     e.preventDefault();
+    const formData = {...values};
+    console.log(JSON.stringify(formData));
   };
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -64,7 +66,7 @@ function Login() {
             </div>
           </div>
           {/* right side */}
-          <div className="relative">
+          <div className=" relative">
             <img
               src="./login/3d.jpeg"
               alt="img"
