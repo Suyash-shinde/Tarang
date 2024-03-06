@@ -1,4 +1,7 @@
 import { useState } from "react";
+import axios from "axios";
+import { RegisterRoute } from "../utils/APIRoutes";
+
 const genders = [
   "-Select-",
   "Male",
@@ -9,19 +12,48 @@ const genders = [
 const timeAvailabilities = ["Weekdays", "Weekends", "Specific Hours"];
 const volunteer_types = ["On-site", "Remote", "Events"];
 const SignUp = () => {
-  const [user, setUser] = useState(0);
-  const handleSubmit = (e) => {
+  const [user, setUser] = useState({
+    firstname: "",
+    lastname: "",
+    password:"",
+    dob: "",
+    gender: "",
+    mobile: "",
+    email: "",
+    confirmpassword:"",
+    volunteertype: [], 
+    timeavailability: "", 
+  });
+
+  const handleChange = (event) => {
+    const { name, value, type } = event.target;
+    setUser((prevData) => ({
+      ...prevData,
+      [name]: type === "checkbox" ? [...prevData.volunteertype, value] : value,
+    }));
+  };
+ 
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const volunteerTypes = Array.from(formData.getAll("volunteer_type"));
-    formData.delete("volunteer_type");
-    const newUser = {
-      ...Object.fromEntries(formData),
-      volunteer_type: volunteerTypes,
-    };
-    console.log(newUser);
-    setUser(user + 1);
-    e.currentTarget.reset();
+    const {firstname, lastname,password,email,gender, mobile, volunteertype, timeavailability}= user;
+    const {data}= await axios.post(RegisterRoute,{
+      firstname,
+      lastname,
+      password,
+      email,
+      gender,
+      mobile,
+      volunteertype,
+      timeavailability,
+    });
+    if(data.status===false){
+      console.log(data.msg);
+    }
+    else{
+      console.log("Registered");
+    }
+  
+    
   };
   return (
     <>
@@ -35,7 +67,7 @@ const SignUp = () => {
           <div>
             <form
               className="h-full mx-8 my-8 md:mx-4 rounded-xl"
-              onSubmit={handleSubmit}
+              onSubmit={(e)=>handleSubmit(e)}
             >
               <div className="flex flex-col py-12 border-t-2 border-gray-300 md:space-y-6 md:flex-row md:grow-0 sm:m-3">
                 <div className="w-full my-6 text-3xl font-bold md:px-6 md:w-1/3 sm:h-auto">
@@ -51,10 +83,12 @@ const SignUp = () => {
                     </label>
                     <div>
                       <input
+                        
                         id="first_name"
-                        name="first_name"
+                        name="firstname"
                         type="text"
                         autoComplete="text"
+                        onChange={(e)=>handleChange(e)}
                         required
                         className="w-full border-gray-300 rounded-lg shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
                       />
@@ -69,10 +103,11 @@ const SignUp = () => {
                     </label>
                     <div>
                       <input
-                        id="last_name"
-                        name="last_name"
+                        id="lastname"
+                        name="lastname"
                         type="text"
                         autoComplete="text"
+                        onChange={(e)=>handleChange(e)}
                         required
                         className="w-full border-gray-300 rounded-lg shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
                       />
@@ -92,6 +127,7 @@ const SignUp = () => {
                         type="date"
                         autoComplete="bday-day"
                         required
+                        onChange={(e)=>handleChange(e)}
                         className="w-full border-gray-300 rounded-lg shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
                       />
                     </div>
@@ -107,6 +143,7 @@ const SignUp = () => {
                       <select
                         name="gender"
                         id="gender"
+                        onChange={(e)=>handleChange(e)}
                         className="w-full border-gray-300 rounded-lg shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
                       >
                         {genders.map((gender) => {
@@ -126,8 +163,9 @@ const SignUp = () => {
                       <input
                         id="mobile"
                         name="mobile"
-                        type="tel"
+                        type="text"
                         autoComplete="mobile"
+                        onChange={(e)=>handleChange(e)}
                         required
                         className="w-full border-gray-300 rounded-lg shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
                       />
@@ -146,6 +184,7 @@ const SignUp = () => {
                         name="email"
                         type="email"
                         autoComplete="email"
+                        onChange={(e)=>handleChange(e)}
                         required
                         className="w-full border-gray-300 rounded-lg shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
                       />
@@ -171,7 +210,8 @@ const SignUp = () => {
                           >
                             <input
                               id={volunteer_type}
-                              name="volunteer_type"
+                              name="volunteertype"
+                              onChange={(e)=>handleChange(e)}
                               type="checkbox"
                               value={volunteer_type}
                               className="w-5 h-5 border-gray-300 rounded-full text-emerald-600 focus:ring-emerald-600"
@@ -201,8 +241,9 @@ const SignUp = () => {
                           >
                             <input
                               id={timeAvailability}
-                              name="timeAvailability"
+                              name="timeavailability"
                               type="radio"
+                              onChange={(e)=>handleChange(e)}
                               value={timeAvailability}
                               className="w-5 h-5 border-gray-300 text-emerald-600 focus:ring-emerald-600"
                             />
@@ -309,6 +350,7 @@ const SignUp = () => {
                         id="password"
                         name="password"
                         type="password"
+                        onChange={(e)=>handleChange(e)}
                         autoComplete="new-password"
                         required
                         className="w-full border-gray-300 rounded-lg shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
@@ -325,8 +367,9 @@ const SignUp = () => {
                     <div>
                       <input
                         id="confirm_password"
-                        name="confirm_password"
+                        name="confirmpassword"
                         type="password"
+                        onChange={(e)=>handleChange(e)}
                         autoComplete="new-password"
                         required
                         className="w-full border-gray-300 rounded-lg shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
