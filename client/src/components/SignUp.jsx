@@ -46,7 +46,9 @@ const SignUp = () => {
       ...formData,
       [event.target.name]: newPassword,
     });
-    setIsMatch(formData.password === newPassword);
+    if (event.target.name === "confirm_password") {
+      setIsMatch(newPassword === "" || newPassword === formData.password);
+    }
   };
 
   const [open_p, setOpen_p] = useState(false);
@@ -366,14 +368,15 @@ const SignUp = () => {
                     >
                       <span className="flex items-center">
                         Confirm Password
-                        {!isMatch && (
-                          <>
-                            <AiFillExclamationCircle className="ml-3 text-sm text-red-600" />
-                            <span className="ml-1 text-sm text-red-500">
-                              Passwords do not match
-                            </span>
-                          </>
-                        )}
+                        {isMatch === false &&
+                          formData.confirm_password !== "" && (
+                            <>
+                              <AiFillExclamationCircle className="ml-3 text-sm text-red-600" />
+                              <span className="ml-1 text-sm text-red-500">
+                                Passwords do not match
+                              </span>
+                            </>
+                          )}
                       </span>
                     </label>
 
