@@ -290,7 +290,7 @@ const SignUp = () => {
                   Profile Credentials
                 </div>
                 <div className="flex flex-wrap items-center w-full md:w-2/3">
-                  // Div for Photo input
+                  {/*Div for Photo input */}
                   <div className="flex flex-col w-full lg:flex-row">
                     <div className="flex flex-col items-center w-full mt-6">
                       <label
@@ -321,7 +321,7 @@ const SignUp = () => {
                         </button>
                       </div>
                     </div>
-                    // Div for Cover-Photo input
+                    {/* Div for Cover-Photo input */}
                     <div className="flex flex-col items-center w-full mt-6">
                       <label
                         htmlFor="file-uploaded"
