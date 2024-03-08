@@ -315,7 +315,7 @@ const SignUp = () => {
                         <button
                           id="photo-uploaded"
                           type="button"
-                          className="rounded-md bg-white px-2.5 py-1.5 text-base font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                          className="px-4 py-2 text-base font-semibold text-gray-900 bg-white rounded-md shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
                         >
                           Change
                         </button>
@@ -445,13 +445,13 @@ const SignUp = () => {
               <div className="flex justify-center w-full py-10 gap-x-6">
                 <button
                   type="reset"
-                  className="px-3 py-2 text-base font-semibold bg-gray-300 rounded-md shadow-sm text-slate-600 hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-300"
+                  className="px-4 py-2 text-base font-semibold bg-gray-300 rounded-md shadow-sm text-slate-600 hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-300"
                 >
                   Reset Form
                 </button>
                 <button
                   type="submit"
-                  className="px-3 py-2 text-base font-semibold text-white bg-green-600 rounded-md shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
+                  className="px-4 py-2 text-base font-semibold text-white bg-green-600 rounded-md shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
                 >
                   Submit
                 </button>
