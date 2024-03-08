@@ -1,4 +1,9 @@
 import { useState } from "react";
+import {
+  AiFillEye,
+  AiFillEyeInvisible,
+  AiFillExclamationCircle,
+} from "react-icons/ai";
 const genders = [
   "-Select-",
   "Male",
@@ -10,8 +15,19 @@ const timeAvailabilities = ["Weekdays", "Weekends", "Specific Hours"];
 const volunteer_types = ["On-site", "Remote", "Events"];
 const SignUp = () => {
   const [user, setUser] = useState(0);
+  const [formData, setFormData] = useState({
+    password: "",
+    confirm_password: "",
+  });
+
+  const [isMatch, setIsMatch] = useState(true);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!isMatch) {
+      return;
+    }
+
     const formData = new FormData(e.currentTarget);
     const volunteerTypes = Array.from(formData.getAll("volunteer_type"));
     formData.delete("volunteer_type");
@@ -20,8 +36,27 @@ const SignUp = () => {
       volunteer_type: volunteerTypes,
     };
     console.log(newUser);
+    setFormData({ password: "", confirm_password: "" });
     setUser(user + 1);
     e.currentTarget.reset();
+  };
+  const handlePasswordChange = (event) => {
+    const newPassword = event.target.value;
+    setFormData({
+      ...formData,
+      [event.target.name]: newPassword,
+    });
+    setIsMatch(formData.password === newPassword);
+  };
+
+  const [open_p, setOpen_p] = useState(false);
+  const [open_c_p, setOpen_c_p] = useState(false);
+
+  const toggle_password = () => {
+    setOpen_p(!open_p);
+  };
+  const toggle_c_password = () => {
+    setOpen_c_p(!open_c_p);
   };
   return (
     <>
@@ -297,40 +332,71 @@ const SignUp = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="mt-6 md:px-6 grow sm:grow-0 md:w-full lg:w-1/2">
+                  <div className="relative mt-6 md:px-6 grow sm:grow-0 md:w-full lg:w-1/2">
                     <label
                       htmlFor="password"
-                      className="block my-2 text-base font-medium text-left"
+                      className="block my-2 text-base font-medium text-left text-gray-900"
                     >
                       Password
                     </label>
-                    <div>
+                    <div className="relative">
                       <input
                         id="password"
                         name="password"
-                        type="password"
+                        type={open_p === false ? "password" : "text"}
                         autoComplete="new-password"
                         required
-                        className="w-full border-gray-300 rounded-lg shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
+                        value={formData.password}
+                        onChange={handlePasswordChange}
+                        className="w-full pr-10 border border-gray-300 rounded-lg shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
                       />
+                      <div className="absolute inset-y-0 right-0 flex items-center pr-3 text-3xl cursor-pointer">
+                        {open_p === false ? (
+                          <AiFillEyeInvisible onClick={toggle_password} />
+                        ) : (
+                          <AiFillEye onClick={toggle_password} />
+                        )}
+                      </div>
                     </div>
                   </div>
-                  <div className="mt-6 md:px-6 grow sm:grow-0 md:w-full lg:w-1/2">
+                  <div className="relative mt-6 md:px-6 grow sm:grow-0 md:w-full lg:w-1/2">
                     <label
                       htmlFor="confirm_password"
-                      className="block my-2 text-base font-medium text-left"
+                      className="block my-2 text-base font-medium text-left text-gray-900"
                     >
-                      Confirm Password
+                      <span className="flex items-center">
+                        Confirm Password
+                        {!isMatch && (
+                          <>
+                            <AiFillExclamationCircle className="ml-3 text-sm text-red-600" />
+                            <span className="ml-1 text-sm text-red-500">
+                              Passwords do not match
+                            </span>
+                          </>
+                        )}
+                      </span>
                     </label>
-                    <div>
+
+                    <div className="relative">
                       <input
                         id="confirm_password"
                         name="confirm_password"
-                        type="password"
+                        type={open_c_p === false ? "password" : "text"}
                         autoComplete="new-password"
                         required
-                        className="w-full border-gray-300 rounded-lg shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
+                        value={formData.confirm_password}
+                        onChange={handlePasswordChange}
+                        className={`w-full pr-10 border ${
+                          !isMatch ? "border-red-500" : "border-gray-300"
+                        } rounded-lg shadow-sm focus:border-emerald-500 focus:ring-emerald-500`}
                       />
+                      <div className="absolute inset-y-0 right-0 flex items-center pr-3 text-3xl cursor-pointer">
+                        {open_c_p === false ? (
+                          <AiFillEyeInvisible onClick={toggle_c_password} />
+                        ) : (
+                          <AiFillEye onClick={toggle_c_password} />
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
