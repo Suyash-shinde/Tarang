@@ -36,6 +36,7 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const {firstname, lastname,password,email,gender, mobile, volunteertype, timeavailability}= user;
+    
     const {data}= await axios.post(RegisterRoute,{
       firstname,
       lastname,
