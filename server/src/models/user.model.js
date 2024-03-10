@@ -1,6 +1,6 @@
 import { Schema } from "mongoose";
 import mongoose from "mongoose";
-
+import jwt from "jsonwebtoken";
 const userSchema = new Schema({
     firstname:{
         type:String,
@@ -14,11 +14,11 @@ const userSchema = new Schema({
         unique:true,
         lowercase:true,
         trim:true,
+        index:true,
     },
     mobile:{
         type:String,
         required:true,
-        unique:true,
         lowercase:true,
         trim:true,
     },
@@ -31,8 +31,36 @@ const userSchema = new Schema({
     },
     timeavailabilities:{
         type:[String],
+    },
+    refreshToken:{
+        type:String,
     }
 
 })
+
+userSchema.methods.genereateAccessTokens=function(){
+    return jwt.sign(
+        {
+            _id:this._id,
+            email:this.email,
+        
+        },
+        process.env.ACCESS_TOKEN_SECRET,
+        {
+            expiresIn:process.env.ACCESS_TOKEN_EXPIRY
+        }
+    )
+}
+userSchema.methods.genereateRefreshTokens=function(){
+    return jwt.sign(
+        {
+            _id:this._id,
+        },
+        process.env.REFRESH_TOKEN_SECRET,
+        {
+            expiresIn:process.env.REFRESH_TOKEN_EXPIRY
+        }
+    )
+}
 
 export const User = mongoose.model("User", userSchema);

@@ -1,10 +1,12 @@
 import express from "express";
 import  connectDb from "../src/db/index.js"
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth.js";
 
 const app=express();
 app.use(cors());
+app.use(cookieParser());
 const port=process.env.PORT;
 connectDb();
 app.use(express.json());
