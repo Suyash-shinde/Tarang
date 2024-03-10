@@ -386,7 +386,7 @@ const SignUp = () => {
                       />
 
                       {/* Toggle visibility button for password */}
-                      <div className="absolute inset-y-0 right-0 flex items-center pr-3 text-3xl cursor-pointer">
+                      <div className="absolute inset-y-0 right-0 flex items-center pr-3 text-2xl cursor-pointer">
                         {open_p === false ? (
                           <AiFillEyeInvisible onClick={toggle_password} />
                         ) : (
@@ -431,7 +431,7 @@ const SignUp = () => {
                       />
 
                       {/* Toggle visibility button for confirm password */}
-                      <div className="absolute inset-y-0 right-0 flex items-center pr-3 text-3xl cursor-pointer">
+                      <div className="absolute inset-y-0 right-0 flex items-center pr-3 text-2xl cursor-pointer">
                         {open_c_p === false ? (
                           <AiFillEyeInvisible onClick={toggle_c_password} />
                         ) : (
