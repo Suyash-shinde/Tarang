@@ -1,7 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
 import { RegisterRoute } from "../utils/APIRoutes";
-
+import {toast, ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { toastOptions } from "../utils/Toastify";
+import {useNavigate} from "react-router-dom";
 const genders = [
   "-Select-",
   "Male",
@@ -12,6 +15,7 @@ const genders = [
 const timeAvailabilities = ["Weekdays", "Weekends", "Specific Hours"];
 const volunteer_types = ["On-site", "Remote", "Events"];
 const SignUp = () => {
+  const navigate= useNavigate();
   const [user, setUser] = useState({
     firstname: "",
     lastname: "",
@@ -32,27 +36,39 @@ const SignUp = () => {
       [name]: type === "checkbox" ? [...prevData.volunteertype, value] : value,
     }));
   };
- 
+
+ const handleValidation=()=>{
+  const {firstname, lastname,password,email,gender, mobile,confirmpassword, volunteertype, timeavailability}= user;
+  if(password!==confirmpassword){
+    toast.error("Password should match Confirm Password", toastOptions);
+    return false;
+  }
+  return true;
+
+
+ }
   const handleSubmit = async (e) => {
     e.preventDefault();
     const {firstname, lastname,password,email,gender, mobile, volunteertype, timeavailability}= user;
-    const {data}= await axios.post(RegisterRoute,{
-      firstname,
-      lastname,
-      password,
-      email,
-      gender,
-      mobile,
-      volunteertype,
-      timeavailability,
-    });
-    if(data.status===false){
-      console.log(data.msg);
+    if(handleValidation()){
+      const {data}= await axios.post(RegisterRoute,{
+        firstname,
+        lastname,
+        password,
+        email,
+        gender,
+        mobile,
+        volunteertype,
+        timeavailability,
+      });
+      if(data.status===false){
+        toast.error(data.msg,toastOptions);
+      }
+      else{
+        toast("Registered");
+        navigate("/home");
+      }
     }
-    else{
-      console.log("Registered");
-    }
-  
     
   };
   return (
@@ -396,6 +412,7 @@ const SignUp = () => {
           </div>
         </div>
       </div>
+      <ToastContainer/>
     </>
   );
 };

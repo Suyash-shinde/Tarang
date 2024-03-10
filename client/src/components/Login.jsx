@@ -1,14 +1,29 @@
 import React, { useState } from "react";
-
+import {toast, ToastContainer} from "react-toastify";
+import {useNavigate} from "react-router-dom";
+import 'react-toastify/dist/ReactToastify.css';
+import { toastOptions } from "../utils/Toastify";
+import { LoginRoute } from "../utils/APIRoutes";
+import {Link} from "react-router-dom"
+import axios from "axios";
 function Login() {
+  const navigate= useNavigate();
   const [values, setValues] = useState({
     email: "",
     password: "",
   });
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = {...values};
-    console.log(JSON.stringify(formData));
+    const {data}= await axios.post(LoginRoute,formData);
+    if(data.status===false){
+      toast.error(data.msg,toastOptions);
+    }
+    else{
+      toast("Logged in");
+      navigate("/home");
+    }
+
   };
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -62,7 +77,7 @@ function Login() {
 
             <div className="text-center text-gray-400">
               Don't have an account?
-              <span className="font-bold text-black"> Sign up for free</span>
+              <span className="font-bold text-black" > <Link to="/signup">Sign up for free</Link></span>
             </div>
           </div>
           {/* right side */}
@@ -75,6 +90,7 @@ function Login() {
           </div>
         </div>
       </div>
+      <ToastContainer/>
     </form>
   );
 }
