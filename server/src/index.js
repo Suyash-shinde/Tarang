@@ -3,10 +3,14 @@ import  connectDb from "../src/db/index.js"
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth.js";
-
 const app=express();
-app.use(cors());
 app.use(cookieParser());
+app.use(cors({
+    credentials: true,
+    origin:"http://localhost:5173",
+    }
+));
+
 const port=process.env.PORT;
 connectDb();
 app.use(express.json());

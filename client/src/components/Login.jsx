@@ -15,7 +15,9 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = {...values};
-    const {data}= await axios.post(LoginRoute,formData);
+    const {data}= await axios.post(LoginRoute,formData,{
+      withCredentials:true,
+    });
     if(data.status===false){
       toast.error(data.msg,toastOptions);
     }

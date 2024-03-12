@@ -1,9 +1,9 @@
 import jwt from "jsonwebtoken";
-import { User } from "../models/user.model";
-const checkAuth=async(req,res,next)=>{
+import { User } from "../models/user.model.js";
+export const checkAuth=async(req,res,next)=>{
     try {
-        const incomingAccessToken= req.cookies?.accessToken;
-    const incomingRefreshToken= req.cookies?.refreshToken;
+    const incomingAccessToken= await req.cookies?.accessToken;
+    const incomingRefreshToken= await req.cookies?.refreshToken;
     if(!incomingAccessToken && !incomingRefreshToken){
         return res.json({msg:"Login expired", status:false});
     }
@@ -44,14 +44,12 @@ const checkAuth=async(req,res,next)=>{
     const decodedToken= jwt.verify(incomingAccessToken,process.env.ACCESS_TOKEN_SECRET);
         const user = await User.findById(decodedToken?._id).select("-password -refreshToken")
         if(!user){
-            throw new Error();
+            return res.json({msg:"error in database", status:false});
         }
-        if(user.accessToken!==incomingAccessToken){
-            return res.json({msg:"unauthorized request", status:false});
-        }
+
         req.user=user;
         next();
     } catch (error) {
-        res.status(false).json({msg:"Invalid Token"});
+        next(error);
     }
 }
