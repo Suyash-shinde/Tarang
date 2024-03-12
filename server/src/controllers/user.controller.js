@@ -57,7 +57,11 @@ export const Login = async(req,res,next)=>{
         }
         delete findUser.password;
         const loggedInUser = await User.findById(findUser._id).select("-password -refreshToken")
-        const{refreshToken, accessToken}= genreateAccessAndRefreshTokens(findUser.email);
+        const accessToken = findUser.genereateAccessTokens();
+        const refreshToken = findUser.genereateRefreshTokens();
+        findUser.refreshToken = refreshToken
+        await findUser.save({ validateBeforeSave: false })
+
         const options={
             httpOnly:true,
             secrure:true,
@@ -73,4 +77,28 @@ export const Login = async(req,res,next)=>{
     } catch (error) {
         next(error);
     }
+}
+
+export const Logout = async(req,res,next)=>{
+    try {
+        const accessToken = req.cookies?.accessToken;
+    const decodedToken=jwt.verify(accessToken,process.env.ACCESS_TOKEN_SECRET);
+    const findUser = await User.findById(decodedToken?._id);
+    if(!findUser){
+        return res.json({msg:"Invalid User", status:false});
+    }
+    findUser.refreshToken="";
+    findUser.save({validateBeforeSave:false});
+
+    return res
+    .clearCookie("accessToken")
+    .clearCookie("refreshToken")
+    .json({
+        msg:"logged out",
+        status:true,
+    });
+    } catch (error) {
+        next(error);
+    }
+
 }
