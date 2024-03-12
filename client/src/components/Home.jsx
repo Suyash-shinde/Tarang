@@ -35,7 +35,7 @@ export const Home = () => {
 				<a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent">Link</a>
 			</li>
 			<li className="flex">
-				<a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent">Link</a>
+				<a rel="noopener noreferrer" href="/Profile" className="flex items-center px-4 -mb-1 border-b-2 border-transparent">Profile</a>
 			</li>
 		</ul>
 		<div className="items-center flex-shrink-0 hidden lg:flex">

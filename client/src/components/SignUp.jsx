@@ -417,7 +417,7 @@ const SignUp = () => {
                         autoComplete="new-password"
                         required
                         value={formData.password}
-                        onChange={handlePasswordChange}
+                        // onChange={handlePasswordChange}
                         className="w-full pr-10 border border-gray-300 rounded-lg shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
                       />
 
@@ -461,7 +461,7 @@ const SignUp = () => {
                         autoComplete="new-password"
                         required
                         value={formData.confirm_password}
-                        onChange={handlePasswordChange}
+                        // onChange={handlePasswordChange}
                         className={`w-full pr-10 border ${
                           !isMatch ? "border-red-500" : "border-gray-300"
                         } rounded-lg shadow-sm focus:border-emerald-500 focus:ring-emerald-500`}
