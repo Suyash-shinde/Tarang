@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 // import { BookOpenIcon, Bars3BottomRightIcon, XMarkIcon } from '@heroicons/react/24/solid'
 // import { HiOutlineXMark, HiMiniBars3BottomRight } from "react-icons/hi2";
+import { IoMdHome } from "react-icons/io";
+import { CgProfile } from "react-icons/cg";
 import { PiWaveSineLight } from "react-icons/pi";
+import { Link, useNavigate } from 'react-router-dom'
+import axios from "axios";
+import { logoutRoute } from '../utils/APIRoutes';
 
 const Header = () => {
   return (
@@ -28,7 +33,7 @@ const Header = () => {
           }
         </a>
         <ul className="items-stretch hidden space-x-3 lg:flex">
-          <li className="flex">
+          {/* <li className="flex">
             <a
               rel="noopener noreferrer"
               href="#"
@@ -45,31 +50,34 @@ const Header = () => {
             >
               Link
             </a>
-          </li>
+        </li>*/}
           <li className="flex">
-            <a
-              rel="noopener noreferrer"
-              href="#"
-              className="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:text-violet-400 hover:border-violet-400"
-            >
-              Link
-            </a>
-          </li>
-          <li className="flex">
-            <a
-              rel="noopener noreferrer"
-              href="#"
-              className="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:text-violet-400 hover:border-violet-400"
-            >
-              Link
-            </a>
-          </li>
+  <a
+    rel="noopener noreferrer"
+    href="/home"
+    className="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:text-violet-400 hover:border-violet-400"
+  >
+    <IoMdHome className="mr-2 text-violet-400 hover:text-violet-700" /> Home
+  </a>
+</li>
+
+<li className="flex">
+  <a
+    rel="noopener noreferrer"
+    href="/profile"
+    className="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:text-violet-400 hover:border-violet-400"
+  >
+    <CgProfile className="mr-2 text-violet-400 hover:text-violet-700" /> Profile
+  </a>
+</li>
         </ul>
         <div className="items-center flex-shrink-0 hidden lg:flex">
-          <button className="self-center px-8 py-3 rounded">Sign in</button>
-          <button className="self-center px-8 py-3 font-semibold rounded bg-violet-400 text-gray-900">
-            Sign up
-          </button>
+        <Link to="/Signup">
+			<button className="self-center px-8 py-3 rounded">Sign up </button>
+			</Link>	
+			<Link to="/Login">
+      <button className="self-center px-8 py-3 font-semibold rounded bg-violet-400 text-gray-900"> Login   </button>
+	  </Link>
         </div>
         <button className="p-4 lg:hidden">
           {/* <svg

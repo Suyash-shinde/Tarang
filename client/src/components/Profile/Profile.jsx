@@ -6,9 +6,11 @@ import { FaAward } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import India from "./ProfilePage_assets/india.png";
 import Person from "./ProfilePage_assets/Person.jpg";
-
+import Navbar from "../Navbar";
 const Profile = () => {
   return (
+    <>
+    <Navbar/>
     <div className="flex w-full h-screen py-4">
       <div className="w-3/4 h-full pl-4 pr-2">
         <div className="border-2 h-1/3 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-t-3xl "></div>
@@ -106,7 +108,9 @@ const Profile = () => {
         </div>
       </div>
     </div>
+     </>
   );
+ 
 };
 
 export default Profile;

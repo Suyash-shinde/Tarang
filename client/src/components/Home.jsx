@@ -35,7 +35,7 @@ export const Home = () => {
 				<a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent">Link</a>
 			</li>
 			<li className="flex">
-				<a rel="noopener noreferrer" href="/Profile" className="flex items-center px-4 -mb-1 border-b-2 border-transparent">Profile</a>
+				<a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent">Link</a>
 			</li>
 		</ul>
 		<div className="items-center flex-shrink-0 hidden lg:flex">
@@ -43,7 +43,8 @@ export const Home = () => {
 			<button className="self-center px-8 py-3 rounded">Sign up </button>
 			</Link>	
 			<Link to="/Login">
-      <button className="self-center px-8 py-3 font-semibold rounded bg-violet-400 text-gray-900"> Login   </button></Link>
+      <button className="self-center px-8 py-3 font-semibold rounded bg-violet-400 text-gray-900"> Login   </button>
+	  </Link>
 		</div>
 		<button className="p-4 lg:hidden">
 			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 text-gray-100">

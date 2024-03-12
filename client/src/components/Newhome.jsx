@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
+import React, { useState ,useEffect} from "react";
+import { BsChevronCompactLeft, BsChevronCompactRight,BsPauseCircle } from "react-icons/bs";
 import { RxDotFilled } from "react-icons/rx";
 import Navbar from "./Navbar";
 function Newhome() {
@@ -19,7 +19,7 @@ function Newhome() {
     },
   ];
   const [currentIndex, setCurrentIndex] = useState(0);
-
+  const [isAutoplay, setIsAutoplay] = useState(true); // State to control autoplay
   const prevSlide = () => {
     const isFirstSlide = currentIndex === 0;
     const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
@@ -35,6 +35,16 @@ function Newhome() {
   const goToSlide = (slideIndex) => {
     setCurrentIndex(slideIndex);
   };
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      if (isAutoplay) {
+        nextSlide();
+      }
+    }, 3000); // Change image every 3 seconds (adjust as needed)
+  
+    // Cleanup function to clear the interval when the component unmounts
+    return () => clearInterval(intervalId);
+  }, [isAutoplay, nextSlide]); // Dependencies to ensure effect runs only when needed
   return (
     <>
       <Navbar />
@@ -58,10 +68,26 @@ function Newhome() {
               onClick={() => goToSlide(slideIndex)}
               className="text-2xl cursor-pointer"
             >
-              <RxDotFilled />
+             
             </div>
           ))}
         </div>
+          {/* Pause Button (New) */}
+          <button className="absolute top-5 right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer invisible group-hover:visible" onClick={() => setIsAutoplay(!isAutoplay)}>
+  {isAutoplay ? '' : ''}
+  <BsPauseCircle size={30} />
+</button>
+
+  <div className="flex top-4 justify-center py-2">
+    {slides.map((slide, slideIndex) => (
+      <div
+        key={slideIndex}
+        onClick={() => goToSlide(slideIndex)}
+        className="text-2xl cursor-pointer"
+      >
+        <RxDotFilled />
+      </div>
+    ))}</div>
       </div>
       <section className="bg-gray-100 py-12">
         <div className="container mx-auto px-4">
