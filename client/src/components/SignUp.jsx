@@ -5,6 +5,13 @@ import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { toastOptions } from "../utils/Toastify";
 import {useNavigate} from "react-router-dom";
+import {
+  AiFillEye,
+  AiFillEyeInvisible,
+  AiFillExclamationCircle,
+} from "react-icons/ai";
+
+// Constants for dropdown options
 const genders = [
   "-Select-",
   "Male",
@@ -14,6 +21,7 @@ const genders = [
 ];
 const timeAvailabilities = ["Weekdays", "Weekends", "Specific Hours"];
 const volunteer_types = ["On-site", "Remote", "Events"];
+
 const SignUp = () => {
   const navigate= useNavigate();
   const [user, setUser] = useState({
@@ -71,6 +79,35 @@ const SignUp = () => {
     }
     
   };
+
+  // Password change handler
+  const handlePasswordChange = (event) => {
+    const newPassword = event.target.value;
+
+    // Update form data
+    setFormData({
+      ...formData,
+      [event.target.name]: newPassword,
+    });
+
+    // Check if input in password & confirm-password match
+    if (event.target.name === "confirm_password") {
+      setIsMatch(newPassword === "" || newPassword === formData.password);
+    }
+  };
+
+  // State and toggle functions for password visibility
+  const [open_p, setOpen_p] = useState(false);
+  const toggle_password = () => {
+    setOpen_p(!open_p);
+  };
+
+  // State and toggle functions for confirm-password visibility
+  const [open_c_p, setOpen_c_p] = useState(false);
+  const toggle_c_password = () => {
+    setOpen_c_p(!open_c_p);
+  };
+
   return (
     <>
       <div className="md:p-20 bg-slate-200">
@@ -89,6 +126,7 @@ const SignUp = () => {
                 <div className="w-full my-6 text-3xl font-bold md:px-6 md:w-1/3 sm:h-auto">
                   Personal Information
                 </div>
+
                 <div className="flex flex-wrap w-full md:w-2/3">
                   <div className="mt-6 md:mt-0 md:px-6 grow sm:grow-0 md:w-full lg:w-1/2">
                     <label
@@ -110,6 +148,7 @@ const SignUp = () => {
                       />
                     </div>
                   </div>
+
                   <div className="mt-6 md:mt-0 md:px-6 grow sm:grow-0 md:w-full lg:w-1/2">
                     <label
                       htmlFor="last_name"
@@ -129,6 +168,7 @@ const SignUp = () => {
                       />
                     </div>
                   </div>
+
                   <div className="w-full mt-6 md:px-6 md:grow-0 lg:w-1/2">
                     <label
                       htmlFor="dob"
@@ -148,6 +188,7 @@ const SignUp = () => {
                       />
                     </div>
                   </div>
+
                   <div className="w-full mt-6 md:px-6 md:grow-0 lg:w-1/2">
                     <label
                       htmlFor="gender"
@@ -168,6 +209,7 @@ const SignUp = () => {
                       </select>
                     </div>
                   </div>
+
                   <div className="w-full mt-6 md:px-6 md:grow-0 lg:w-1/2">
                     <label
                       htmlFor="mobile"
@@ -187,6 +229,7 @@ const SignUp = () => {
                       />
                     </div>
                   </div>
+
                   <div className="mt-6 md:px-6 grow sm:grow-0 md:w-full lg:w-1/2">
                     <label
                       htmlFor="email"
@@ -208,6 +251,7 @@ const SignUp = () => {
                   </div>
                 </div>
               </div>
+
               <div className="flex flex-col py-12 border-t-2 border-gray-300 md:flex-row md:grow-0 sm:m-3">
                 <div className="w-full my-6 text-3xl font-bold md:px-6 md:w-1/3 sm:h-auto">
                   Volunteer Preferences
@@ -243,11 +287,11 @@ const SignUp = () => {
                       })}
                     </div>
                   </div>
+
                   <div className="flex flex-col w-full mt-6 sm:w-2/3 md:grow-0 md:px-6 lg:w-1/2">
                     <div className="text-lg font-semibold text-gray-900">
                       Time Availability
                     </div>
-
                     <div className="mt-6 space-y-6">
                       {timeAvailabilities.map((timeAvailability) => {
                         return (
@@ -281,6 +325,7 @@ const SignUp = () => {
                   Profile Credentials
                 </div>
                 <div className="flex flex-wrap items-center w-full md:w-2/3">
+                  {/*Div for Photo input */}
                   <div className="flex flex-col w-full lg:flex-row">
                     <div className="flex flex-col items-center w-full mt-6">
                       <label
@@ -305,12 +350,13 @@ const SignUp = () => {
                         <button
                           id="photo-uploaded"
                           type="button"
-                          className="rounded-md bg-white px-2.5 py-1.5 text-base font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                          className="px-4 py-2 text-base font-semibold text-gray-900 bg-white rounded-md shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
                         >
                           Change
                         </button>
                       </div>
                     </div>
+                    {/* Div for Cover-Photo input */}
                     <div className="flex flex-col items-center w-full mt-6">
                       <label
                         htmlFor="file-uploaded"
@@ -354,14 +400,15 @@ const SignUp = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="mt-6 md:px-6 grow sm:grow-0 md:w-full lg:w-1/2">
+                  {/* Password Input Field */}
+                  <div className="relative mt-6 md:px-6 grow sm:grow-0 md:w-full lg:w-1/2">
                     <label
                       htmlFor="password"
-                      className="block my-2 text-base font-medium text-left"
+                      className="block my-2 text-base font-medium text-left text-gray-900"
                     >
                       Password
                     </label>
-                    <div>
+                    <div className="relative">
                       <input
                         id="password"
                         name="password"
@@ -369,18 +416,43 @@ const SignUp = () => {
                         onChange={(e)=>handleChange(e)}
                         autoComplete="new-password"
                         required
-                        className="w-full border-gray-300 rounded-lg shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
+                        value={formData.password}
+                        onChange={handlePasswordChange}
+                        className="w-full pr-10 border border-gray-300 rounded-lg shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
                       />
+
+                      {/* Toggle visibility button for password */}
+                      <div className="absolute inset-y-0 right-0 flex items-center pr-3 text-2xl cursor-pointer">
+                        {open_p === false ? (
+                          <AiFillEyeInvisible onClick={toggle_password} />
+                        ) : (
+                          <AiFillEye onClick={toggle_password} />
+                        )}
+                      </div>
                     </div>
                   </div>
-                  <div className="mt-6 md:px-6 grow sm:grow-0 md:w-full lg:w-1/2">
+                  {/* Confirm Password Input Field */}
+                  <div className="relative mt-6 md:px-6 grow sm:grow-0 md:w-full lg:w-1/2">
                     <label
                       htmlFor="confirm_password"
-                      className="block my-2 text-base font-medium text-left"
+                      className="block my-2 text-base font-medium text-left text-gray-900"
                     >
-                      Confirm Password
+                      <span className="flex items-center">
+                        Confirm Password
+                        {/* Display error message if passwords do not match */}
+                        {isMatch === false &&
+                          formData.confirm_password !== "" && (
+                            <>
+                              <AiFillExclamationCircle className="ml-3 text-sm text-red-600" />
+                              <span className="ml-1 text-sm text-red-500">
+                                Passwords do not match
+                              </span>
+                            </>
+                          )}
+                      </span>
                     </label>
-                    <div>
+
+                    <div className="relative">
                       <input
                         id="confirm_password"
                         name="confirmpassword"
@@ -388,8 +460,21 @@ const SignUp = () => {
                         onChange={(e)=>handleChange(e)}
                         autoComplete="new-password"
                         required
-                        className="w-full border-gray-300 rounded-lg shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
+                        value={formData.confirm_password}
+                        onChange={handlePasswordChange}
+                        className={`w-full pr-10 border ${
+                          !isMatch ? "border-red-500" : "border-gray-300"
+                        } rounded-lg shadow-sm focus:border-emerald-500 focus:ring-emerald-500`}
                       />
+
+                      {/* Toggle visibility button for confirm password */}
+                      <div className="absolute inset-y-0 right-0 flex items-center pr-3 text-2xl cursor-pointer">
+                        {open_c_p === false ? (
+                          <AiFillEyeInvisible onClick={toggle_c_password} />
+                        ) : (
+                          <AiFillEye onClick={toggle_c_password} />
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -397,13 +482,13 @@ const SignUp = () => {
               <div className="flex justify-center w-full py-10 gap-x-6">
                 <button
                   type="reset"
-                  className="px-3 py-2 text-base font-semibold bg-gray-300 rounded-md shadow-sm text-slate-600 hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-300"
+                  className="px-4 py-2 text-base font-semibold bg-gray-300 rounded-md shadow-sm text-slate-600 hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-300"
                 >
                   Reset Form
                 </button>
                 <button
                   type="submit"
-                  className="px-3 py-2 text-base font-semibold text-white bg-green-600 rounded-md shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
+                  className="px-4 py-2 text-base font-semibold text-white bg-green-600 rounded-md shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
                 >
                   Submit
                 </button>
