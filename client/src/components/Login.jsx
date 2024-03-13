@@ -3,7 +3,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { toastOptions } from "../utils/Toastify";
-import { LoginRoute } from "../utils/APIRoutes";
+import { LoginRoute } from "../utils/APIRoutes"
 import { Link } from "react-router-dom";
 // import Navbar from "./Navbar";
 import axios from "axios";

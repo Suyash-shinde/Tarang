@@ -6,9 +6,25 @@ import { CgProfile } from "react-icons/cg";
 import { PiWaveSineLight } from "react-icons/pi";
 import { Link, useNavigate } from 'react-router-dom'
 import axios from "axios";
-import { logoutRoute } from '../utils/APIRoutes';
+import { logoutRoute } from '../utils/APIRoutes.js';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { toastOptions } from "../utils/Toastify";
+import { logout } from "../utils/Api.post";
 
 const Header = () => {
+  const navigate=useNavigate();
+  const handleclick=async()=>{
+    const {data} = await logout();
+    if(data.status===false){
+      toast.error(data.msg,toastOptions);
+      console.log(data.error);
+    }
+    else{
+      toast(data.msg);
+      navigate("/login");
+    }
+  }
   return (
     <header className="p-4 bg-gray-800 text-gray-100">
       <div className="container flex justify-between h-14 mx-auto">
@@ -73,7 +89,7 @@ const Header = () => {
         </ul>
         <div className="items-center flex-shrink-0 hidden lg:flex">
         <Link to="/Signup">
-			<button className="self-center px-8 py-3 rounded">Sign up </button>
+			<button className="self-center px-8 py-3 rounded " onClick={handleclick}> Logout</button>
 			</Link>	
 			<Link to="/Login">
       <button className="self-center px-8 py-3 font-semibold rounded bg-violet-400 text-gray-900"> Login   </button>
@@ -96,6 +112,7 @@ const Header = () => {
           </svg> */}
         </button>
       </div>
+      <ToastContainer/>
     </header>
   );
 };
