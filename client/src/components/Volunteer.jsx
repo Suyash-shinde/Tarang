@@ -16,8 +16,8 @@ export const Volunteer = () => {
   return (
     <>
     <div>
-      {dummy.map((event)=>(
-          <V key={event._id} event={event}></V>
+      {[dummy].map((event)=>(
+          <V key={event.title} event={event}></V>
         ))}
     </div>
     </>
