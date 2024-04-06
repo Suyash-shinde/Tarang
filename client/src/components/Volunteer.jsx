@@ -1,16 +1,18 @@
 import React from 'react'
+import { useEffect ,useState} from 'react'
 import {V} from './V'
 export const Volunteer = () => {
-  const dummy={
-    first :{
-      title:"first_title",
+  const [dummy, setDummy] = useState({
+    first: {
+      title: "first_title",
       owner: "Hello",
     },
-    second :{
-      title:"second_title",
+    second: {
+      title: "second_title",
       owner: "world",
-    }
-  }
+    },
+  });
+  
   return (
     <>
     <div>

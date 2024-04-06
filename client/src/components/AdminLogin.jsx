@@ -10,7 +10,7 @@ import axios from "axios";
 function Login() {
   const navigate = useNavigate();
   const [values, setValues] = useState({
-    email: "",
+    name: "",
     password: "",
   });
   const handleSubmit = async (e) => {
@@ -45,12 +45,12 @@ function Login() {
                 Welcome back! Please enter your details
               </span>
               <div className="py-4">
-                <span className="mb-2 text-md">Email</span>
+                <span className="mb-2 text-md">Name</span>
                 <input
                   type="text"
                   className="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
-                  name="email"
-                  id="email"
+                  name="name"
+                  id="name"
                   onChange={(e) => {
                     handleChange(e);
                   }}
@@ -82,15 +82,10 @@ function Login() {
                 Don't have an account?
                 <span className="font-bold text-black">
                   {" "}
-                  <Link to="/signup">Sign up for free</Link>
+                  <Link to="/AdminSignUp">Sign up for free</Link>
                 </span>
               </div>
-              <div className="text-center text-green-400">
-                <span className="font-bold text-green">
-                  {" "}
-                  <Link to="/AdminLogin">Login as NGO organizations</Link>
-                </span>
-              </div>
+              
             </div>
             {/* right side */}
             <div className=" relative">
