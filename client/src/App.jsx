@@ -6,6 +6,7 @@ import { Test } from "./components/Test";
 import Profile from "./components/Profile/Profile";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Newhome from "./components/Newhome";
+import { Volunteer } from "./components/Volunteer";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/home" element={<Newhome />}/>
           <Route path="/test" element={<Test />}/>
           <Route path="/profile" element={<Profile />}/>
+          <Route path="/volunteer" element={<Volunteer />}/>
         </Routes>
       </BrowserRouter>
     </>

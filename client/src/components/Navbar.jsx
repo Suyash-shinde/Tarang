@@ -67,7 +67,7 @@ const Header = () => {
               Link
             </a>
         </li>*/}
-          <li className="flex">
+<li className="flex">
   <a
     rel="noopener noreferrer"
     href="/home"
@@ -84,6 +84,15 @@ const Header = () => {
     className="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:text-violet-400 hover:border-violet-400"
   >
     <CgProfile className="mr-2 text-violet-400 hover:text-violet-700" /> Profile
+  </a>
+</li>
+<li className="flex">
+  <a
+    rel="noopener noreferrer"
+    href="/volunteer"
+    className="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:text-violet-400 hover:border-violet-400"
+  >
+    <IoMdHome className="mr-2 text-violet-400 hover:text-violet-700" /> Volunteer
   </a>
 </li>
         </ul>
