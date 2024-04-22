@@ -5,25 +5,28 @@ import "react-toastify/dist/ReactToastify.css";
 import { toastOptions } from "../utils/Toastify";
 import { LoginRoute } from "../utils/APIRoutes"
 import { Link } from "react-router-dom";
+import { adminLogin } from "../utils/Api.post";
+import {useDispatch} from 'react-redux';
+import { setAuth } from '../store/authSlice.js';
 // import Navbar from "./Navbar";
-import axios from "axios";
+
 function Login() {
   const navigate = useNavigate();
+  const dispatch=useDispatch();
   const [values, setValues] = useState({
-    email: "",
+    name: "",
     password: "",
   });
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = { ...values };
-    const { data } = await axios.post(LoginRoute, formData, {
-      withCredentials: true,
-    });
+    const { data } = await adminLogin(formData);
     if (data.status === false) {
       toast.error(data.msg, toastOptions);
     } else {
+      dispatch(setAuth(data));
       toast("Logged in");
-      navigate("/home");
+      navigate("/AdminHome");
     }
   };
   const handleChange = (e) => {
@@ -45,12 +48,12 @@ function Login() {
                 Welcome back! Please enter your details
               </span>
               <div className="py-4">
-                <span className="mb-2 text-md">Email</span>
+                <span className="mb-2 text-md">Name</span>
                 <input
                   type="text"
                   className="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
-                  name="email"
-                  id="email"
+                  name="name"
+                  id="name"
                   onChange={(e) => {
                     handleChange(e);
                   }}
@@ -82,15 +85,10 @@ function Login() {
                 Don't have an account?
                 <span className="font-bold text-black">
                   {" "}
-                  <Link to="/signup">Sign up for free</Link>
+                  <Link to="/AdminSignUp">Sign up for free</Link>
                 </span>
               </div>
-              <div className="text-center text-green-400">
-                <span className="font-bold text-green">
-                  {" "}
-                  <Link to="/AdminLogin">Login as NGO organizations</Link>
-                </span>
-              </div>
+              
             </div>
             {/* right side */}
             <div className=" relative">
