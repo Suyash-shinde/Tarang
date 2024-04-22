@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
+import { newEvent } from "../utils/Api.post";
+import {useSelector} from 'react-redux';
+import {toast, ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { toastOptions } from '../utils/Toastify.js';
 function AdminHome() {
   const [values, setValues] = useState({
     title: "",
@@ -9,11 +14,18 @@ function AdminHome() {
     date: "",
     location: "",
     eventtype: "",
+    user:"",
   });
-  const handleSubmit = (e) => {
+  const user= useSelector((state)=>state.auth.user);
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = { ...values };
-    console.log(JSON.stringify(formData));
+    const formData = { ...values,user};
+    const {data} = await newEvent(formData);
+    if (data.status === false) {
+      toast.error(data.msg, toastOptions);
+    } else {
+      toast("New Event Posted");
+    }
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,6 +38,7 @@ function AdminHome() {
   };
 
   return (
+    <>
     <div className="signup-card card border  p-4">
       <div className="card border border-primary">
         <div className="card-header bg-primary text-white text-center">
@@ -149,6 +162,8 @@ function AdminHome() {
         </div>
       </div>
     </div>
+    <ToastContainer/>
+    </>
   );
 }
 

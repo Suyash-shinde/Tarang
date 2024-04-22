@@ -1,24 +1,25 @@
 import React from 'react'
 import { useEffect ,useState} from 'react'
 import {V} from './V'
+import { getEvents } from '../utils/Api.post';
 export const Volunteer = () => {
-  const [dummy, setDummy] = useState({
-    first: {
-      title: "first_title",
-      owner: "Hello",
-    },
-    second: {
-      title: "second_title",
-      owner: "world",
-    },
-  });
+  const [dummy, setDummy] = useState([]);
+  const fetchEvents = async()=>{
+    const {data} = await getEvents();
+    setDummy(data.events);
+  }
+  useEffect(()=>{
+    fetchEvents();
+  },[]);
   
   return (
     <>
     <div>
-      {[dummy].map((event)=>(
-          <V key={event.title} event={event}></V>
-        ))}
+      {dummy.map((event)=>{
+          return(
+          <V key={event._id} event={event}></V>
+          )
+          })}
     </div>
     </>
     

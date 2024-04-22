@@ -5,9 +5,16 @@ import App from "./App.jsx";
 // const router = createBrowserRouter([
 
 // ])
+import { store, persistedStore} from './store';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    {/* <RouterProvider router={router} /> */}
-    <App />
-  </React.StrictMode>
+  <>
+    <Provider store={store}>
+      <PersistGate persistor={persistedStore}>
+        <App />
+      </PersistGate>
+      
+    </Provider>
+  </>
 );

@@ -5,10 +5,14 @@ import "react-toastify/dist/ReactToastify.css";
 import { toastOptions } from "../utils/Toastify";
 import { LoginRoute } from "../utils/APIRoutes"
 import { Link } from "react-router-dom";
+import { adminLogin } from "../utils/Api.post";
+import {useDispatch} from 'react-redux';
+import { setAuth } from '../store/authSlice.js';
 // import Navbar from "./Navbar";
-import axios from "axios";
+
 function Login() {
   const navigate = useNavigate();
+  const dispatch=useDispatch();
   const [values, setValues] = useState({
     name: "",
     password: "",
@@ -16,14 +20,13 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = { ...values };
-    const { data } = await axios.post(LoginRoute, formData, {
-      withCredentials: true,
-    });
+    const { data } = await adminLogin(formData);
     if (data.status === false) {
       toast.error(data.msg, toastOptions);
     } else {
+      dispatch(setAuth(data));
       toast("Logged in");
-      navigate("/home");
+      navigate("/AdminHome");
     }
   };
   const handleChange = (e) => {

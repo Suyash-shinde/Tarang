@@ -1,4 +1,4 @@
-import mongoose, {Schema} from mongoose;
+import {mongoose, Schema} from "mongoose";
 const eventSchema = new Schema({
     title:{
         type: String,
@@ -17,7 +17,7 @@ const eventSchema = new Schema({
         required: true,
     },
     organiser:{
-        type:Schema.Types.objectId,
+        type:Schema.Types.ObjectId,
         ref:'Organiser'
     },
 },

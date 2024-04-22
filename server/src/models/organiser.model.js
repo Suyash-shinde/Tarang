@@ -16,7 +16,6 @@ const organiserSchema = new Schema({
     },
     password:{
         type:String,
-        lowercase:true,
         required:true,
     }
 })

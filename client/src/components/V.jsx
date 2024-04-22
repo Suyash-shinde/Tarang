@@ -5,7 +5,7 @@ export const V = ({event}) => {
   const navigate=useNavigate();
 
   return (
-    <>
+    <div >
         <div onClick={()=>{
             navigate(`/event/${event._id}`)
           }}
@@ -13,6 +13,6 @@ export const V = ({event}) => {
           <div className={styles.title}>{event.title}</div>
           <div className={styles.owner}>{event.owner}</div>
         </div>
-    </>
+    </div>
   )
 }

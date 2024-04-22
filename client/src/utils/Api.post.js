@@ -1,6 +1,6 @@
 import axios from "axios";
-import { logoutRoute } from "./APIRoutes.js";
-import { refreshTokenRoute } from "./APIRoutes.js";
+import { adminRegisterRoute, getDetailsRoute, getEventsRoute, logoutRoute, newEventRoute } from "./APIRoutes.js";
+import { refreshTokenRoute,adminLoginRoute } from "./APIRoutes.js";
 const api = axios.create({
     baseURL: "http://localhost:5173",
     withCredentials: true,
@@ -11,7 +11,11 @@ const api = axios.create({
 });
 
 export const logout = ()=> api.post(logoutRoute);
-
+export const adminLogin = (data)=>api.post(adminLoginRoute, data);
+export const adminRegister = (data)=>api.post(adminRegisterRoute,data);
+export const newEvent = (data)=>api.post(newEventRoute,data);
+export const getEvents=()=>api.get(getEventsRoute);
+export const getEventDetail=(eventId)=>api.get(`${getDetailsRoute}/${eventId}`);
 api.interceptors.response.use(
     (config)=>{
         return config;

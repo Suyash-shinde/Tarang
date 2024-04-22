@@ -1,12 +1,12 @@
 import bcrypt from "bcrypt"
-import { Organiser } from "../models/organiser.model";
+import { Organiser } from "../models/organiser.model.js";
 export const newAdmin=async(req,res,next)=>{
     try {
-        const{name,location,domain,password}=req.body;
-        if(!name || !location || !domain || password){
+        const {name,location,domain,password}=req.body;
+        if(!name || !location || !domain || !password){
             return res.json({
                 msg:"All domains are required",
-                status:true,
+                status:false,
             })
         }
         const hashedPassword = bcrypt.hashSync(password,10);
@@ -47,8 +47,13 @@ export const adminLogin = async(req,res,next)=>{
             })
         }
         const findUser = await Organiser.findOne({name});
-        const compare = bcrypt.compareSync(password,findUser.password);
-        if(!compare){
+        if(!findUser){
+            return res.json({msg:"No User Found", status:false});
+        }
+        console.log(findUser)
+        console.log(password);
+        const comparePass = bcrypt.compareSync(password,findUser.password);
+        if(!comparePass){
             return res.json({
                 msg:"Invalid Username or Password",
                 status:false,
