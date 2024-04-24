@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { getEventDetail } from '../utils/Api.post';
-
+import Navbar from './Navbar'
 export const EventPage = () => {
     const [Details,setDetails]=useState({});
     const{id:eventId}= useParams();
@@ -16,6 +16,7 @@ export const EventPage = () => {
     },[eventId]);
   return (
     <>
+    <Navbar/>
     <div>
     {Details.title} 
     </div>
