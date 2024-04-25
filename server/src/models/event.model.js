@@ -16,6 +16,14 @@ const eventSchema = new Schema({
         type: String,
         required: true,
     },
+    expired:{
+        type:Boolean,
+        required:true,
+    },
+    participants:[{
+        type:Schema.Types.ObjectId,
+        ref:'User'
+    }],
     organiser:{
         type:Schema.Types.ObjectId,
         ref:'Organiser'

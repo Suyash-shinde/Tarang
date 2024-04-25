@@ -17,7 +17,11 @@ const organiserSchema = new Schema({
     password:{
         type:String,
         required:true,
-    }
+    },
+    events:[{
+        type:Schema.Types.ObjectId,
+        ref:'Event',
+    }]
 })
 
 export const Organiser = mongoose.model("Organiser", organiserSchema); 

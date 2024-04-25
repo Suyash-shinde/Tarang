@@ -12,7 +12,8 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Newhome from "./components/Newhome";
 import { Volunteer } from "./components/Volunteer";
 import { ParticipatePage } from "./components/ParticipatePage";
-
+import { AdminBase } from "./components/AdminBase";
+import { AdminLive } from "./components/AdminLive";
 
 function App() {
   return (
@@ -32,6 +33,8 @@ function App() {
           <Route path="/volunteer" element={<Volunteer />}/>
           <Route path="/event/:id" element={< EventPage/>}/>
           <Route path="/participatepage" element={<ParticipatePage/>}/>
+          <Route path="/adminbase" element={<AdminBase/>}/>
+          <Route path="/adminlive" element={<AdminLive/>}/>
         </Routes>
       </BrowserRouter>
     </>

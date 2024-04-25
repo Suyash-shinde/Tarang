@@ -5,7 +5,7 @@ import { Logout } from "../controllers/user.controller.js";
 import { verifyJwt } from "../middleware/auth.middleware.js";
 import {refreshAccessToken} from "../controllers/user.controller.js";
 import { adminLogin, newAdmin } from "../controllers/organiser.controller.js";
-import { getAllEvents, newEvent, getDetails} from "../controllers/event.controller.js";
+import { getAllEvents, newEvent, getDetails, handleEntry, getNGOEvents} from "../controllers/event.controller.js";
 const router = Router();
 
 router.route("/register").post(Register);
@@ -17,4 +17,6 @@ router.route("/adminregister").post(newAdmin);
 router.route("/newevent").post(newEvent);
 router.route("/getevents").get(getAllEvents);
 router.route("/event/:eventId").get(verifyJwt,getDetails);
+router.route("/participate").post(verifyJwt, handleEntry);
+router.route("/myevents").post(getNGOEvents);
 export default router;

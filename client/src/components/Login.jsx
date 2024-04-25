@@ -5,16 +5,20 @@ import "react-toastify/dist/ReactToastify.css";
 import { toastOptions } from "../utils/Toastify";
 import { LoginRoute } from "../utils/APIRoutes"
 import { Link } from "react-router-dom";
+import { setAuth } from '../store/authSlice.js';
 // import Navbar from "./Navbar";
 import axios from "axios";
+import { useDispatch } from "react-redux";
 function Login() {
   const navigate = useNavigate();
+  const dispatch=useDispatch();
   const [values, setValues] = useState({
     email: "",
     password: "",
   });
   const handleSubmit = async (e) => {
     e.preventDefault();
+   
     const formData = { ...values };
     const { data } = await axios.post(LoginRoute, formData, {
       withCredentials: true,
@@ -22,6 +26,7 @@ function Login() {
     if (data.status === false) {
       toast.error(data.msg, toastOptions);
     } else {
+      dispatch(setAuth(data));
       toast("Logged in");
       navigate("/home");
     }

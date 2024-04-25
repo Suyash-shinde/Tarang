@@ -5,12 +5,12 @@ import { Link, useNavigate } from 'react-router-dom'
 const VCSS = ({event}) => {
   const navigate=useNavigate()
   return (
-    <Card  onClick={()=>{
+    <Card key={event._id} onClick={()=>{
       navigate(`/event/${event._id}`)
     }} className='my-3 p-3 rounded'>
     <CardBody >
         
-            <Card.Title as='div'className='product-title'>
+            <Card.Title as='div'className='product-title' >
               {event.title}
                 </Card.Title>
             

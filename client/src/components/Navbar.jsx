@@ -11,8 +11,11 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { toastOptions } from "../utils/Toastify";
 import { logout } from "../utils/Api.post";
+import { useDispatch } from "react-redux";
+import { setAuth } from "../store/authSlice.js";
 
 const Header = () => {
+  const dispatch = useDispatch();
   const navigate=useNavigate();
   const handleclick=async()=>{
     const {data} = await logout();
@@ -21,6 +24,7 @@ const Header = () => {
       console.log(data.error);
     }
     else{
+      dispatch(setAuth(null));
       toast(data.msg);
       navigate("/login");
     }

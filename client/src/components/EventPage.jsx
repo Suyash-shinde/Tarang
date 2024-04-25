@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getEventDetail } from '../utils/Api.post';
-import { Row, Col, Image, Card, Button, ListGroup, ListGroupItem, Container } from 'react-bootstrap';
-
+import { enterEvent, getEventDetail } from '../utils/Api.post';
+import { Row, Col, Image, Card, Button, ListGroup, ListGroupItem, Container, Toast } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 import Navbar from './Navbar';
-import { ParticipatePage } from './ParticipatePage';
+import {toast, ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { toastOptions } from '../utils/Toastify.js';
 
 export const EventPage = () => {
     const [Details, setDetails] = useState({});
@@ -24,9 +26,16 @@ export const EventPage = () => {
     useEffect(() => {
         getDetails();
     }, [eventId]);
-
-    const handleParticipate = () => {
-        navigate('/participatepage', { state: { details: Details } });
+    const user= useSelector((state)=>state.auth.user);
+    const handleParticipate = async() => {
+        console.log(user);
+        const {data} = await enterEvent({
+            userId: user._id,
+            eventId,
+        });
+        
+            toast(data.msg);
+        
     };
 
     return (
@@ -63,7 +72,7 @@ export const EventPage = () => {
                                         </Row>
                                     </ListGroupItem>
                                     <ListGroupItem className="d-flex justify-content-center">
-                                        <Button className="btn-block" type="button">
+                                        <Button className="btn-block" type="button" onClick={handleParticipate} >
                                             Participate
                                         </Button>
                                     </ListGroupItem>
@@ -73,6 +82,7 @@ export const EventPage = () => {
                     </Row>
                 </div>
             </Container>
+        <ToastContainer/>
         </>
     );
 };
