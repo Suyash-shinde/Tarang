@@ -9,8 +9,9 @@ const VCSS = ({event}) => {
       navigate(`/event/${event._id}`)
     }} className='my-3 p-3 rounded'>
     <CardBody >
-        
-            <Card.Title as='div'className='product-title'>
+    <Card.Img src="../public/home/ngo2.jpeg" variant="top"/>
+
+            <Card.Title as='div' className='product-title d-flex justify-content-center align-items-center'>
               {event.title}
                 </Card.Title>
             
