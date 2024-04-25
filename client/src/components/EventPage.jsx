@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { getEventDetail } from '../utils/Api.post';
 import Navbar from './Navbar'
+import { ParticipatePage } from './ParticipatePage';
 export const EventPage = () => {
     const [Details,setDetails]=useState({});
     const{id:eventId}= useParams();
+    const navigate= useNavigate();
     const getDetails= async()=>{
         const {data} = await getEventDetail(eventId);
         console.log(data) ;
@@ -13,7 +15,11 @@ export const EventPage = () => {
     }
     useEffect(()=>{
         getDetails();
+        
     },[eventId]);
+    const handleParticipate=()=>{
+      navigate('/participatepage', {state:{details:Details}});
+    }
   return (
     <>
     <Navbar/>
@@ -29,7 +35,7 @@ export const EventPage = () => {
     <div>
       {Details.date}
     </div>
-    
+    <button onClick={handleParticipate}>Participate</button>
     </>
   )
 }

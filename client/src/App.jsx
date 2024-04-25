@@ -11,6 +11,7 @@ import { EventPage } from "./components/EventPage";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Newhome from "./components/Newhome";
 import { Volunteer } from "./components/Volunteer";
+import { ParticipatePage } from "./components/ParticipatePage";
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
           <Route path="/profile" element={<Profile />}/>
           <Route path="/volunteer" element={<Volunteer />}/>
           <Route path="/event/:id" element={< EventPage/>}/>
+          <Route path="/participatepage" element={<ParticipatePage/>}/>
         </Routes>
       </BrowserRouter>
     </>
