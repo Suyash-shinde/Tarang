@@ -112,3 +112,12 @@ export const getNGOEvents = async(req,res,next)=>{
         next(error)
     }
 }
+
+export const participantsList = async(req,res,next)=>{
+    try {
+        const event = await Event.findById(req.params.eventId).populate('participants').exec();
+        return res.json(event);
+    } catch (error) {
+        next(error);
+    }
+}
