@@ -3,10 +3,11 @@ import React, { useState } from "react";
 // import { HiOutlineXMark, HiMiniBars3BottomRight } from "react-icons/hi2";
 import { IoMdHome } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
+import { MdOutlineVolunteerActivism } from "react-icons/md";
 import { PiWaveSineLight } from "react-icons/pi";
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { logoutRoute } from '../utils/APIRoutes.js';
+import { logoutRoute } from "../utils/APIRoutes.js";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { toastOptions } from "../utils/Toastify";
@@ -16,27 +17,27 @@ import { setAuth } from "../store/authSlice.js";
 
 const Header = () => {
   const dispatch = useDispatch();
-  const navigate=useNavigate();
-  const handleclick=async()=>{
-    const {data} = await logout();
-    if(data.status===false){
-      toast.error(data.msg,toastOptions);
+  const navigate = useNavigate();
+  const handleclick = async () => {
+    const { data } = await logout();
+    if (data.status === false) {
+      toast.error(data.msg, toastOptions);
       console.log(data.error);
-    }
-    else{
+    } else {
       dispatch(setAuth(null));
       toast(data.msg);
       navigate("/login");
     }
-  }
+  };
   return (
-    <header className="p-4 bg-gray-800 text-gray-100">
-      <div className="container flex justify-between h-14 mx-auto">
+    <header className="p-4 text-gray-100 bg-gray-800">
+      <div className="container flex justify-between h-8 mx-auto">
         <a
           rel="noopener noreferrer"
           href="#"
+          style={{ textDecoration: "none" }}
           aria-label="Back to homepage"
-          className="flex items-center p-2"
+          className="flex items-center text-3xl font-bold text-blue-300"
         >
           {
             /* <svg
@@ -49,8 +50,9 @@ const Header = () => {
             <path d="M22.094 19.451h-0.758c-0.188 0-0.363 0.049-0.515 0.135l0.006-0.004-4.574 2.512-5.282-3.049v-6.082l5.282-3.051 4.576 2.504c0.146 0.082 0.323 0.131 0.508 0.131h0.758c0.293 0 0.529-0.239 0.529-0.531v-0.716c0-0.2-0.11-0.373-0.271-0.463l-0.004-0.002-5.078-2.777c-0.293-0.164-0.645-0.26-1.015-0.26-0.39 0-0.756 0.106-1.070 0.289l0.010-0.006-5.281 3.049c-0.636 0.375-1.056 1.055-1.059 1.834v6.082c0 0.779 0.422 1.461 1.049 1.828l0.009 0.006 5.281 3.049c0.305 0.178 0.67 0.284 1.061 0.284 0.373 0 0.723-0.098 1.027-0.265l-0.012 0.006 5.080-2.787c0.166-0.091 0.276-0.265 0.276-0.465v-0.716c0-0.293-0.238-0.529-0.529-0.529z"></path>
           </svg> */
 
-            <PiWaveSineLight />
+            <PiWaveSineLight className="mx-2 text-5xl font-extrabold" />
           }
+          Tarang
         </a>
         <ul className="items-stretch hidden space-x-3 lg:flex">
           {/* <li className="flex">
@@ -71,42 +73,55 @@ const Header = () => {
               Link
             </a>
         </li>*/}
-<li className="flex">
-  <a
-    rel="noopener noreferrer"
-    href="/home"
-    className="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:text-violet-400 hover:border-violet-400"
-  >
-    <IoMdHome className="mr-2 text-violet-400 hover:text-violet-700" /> Home
-  </a>
-</li>
+          <li className="flex">
+            <a
+              rel="noopener noreferrer"
+              style={{ textDecoration: "none" }}
+              href="/home"
+              className="flex items-center px-4 my-auto text-lg text-white transition ease-in-out delay-150 border-b-2 border-transparent hover:text-violet-400 hover:border-violet-400"
+            >
+              <IoMdHome className="mr-2 text-xl text-violet-300" /> Home
+            </a>
+          </li>
 
-<li className="flex">
-  <a
-    rel="noopener noreferrer"
-    href="/profile"
-    className="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:text-violet-400 hover:border-violet-400"
-  >
-    <CgProfile className="mr-2 text-violet-400 hover:text-violet-700" /> Profile
-  </a>
-</li>
-<li className="flex">
-  <a
-    rel="noopener noreferrer"
-    href="/volunteer"
-    className="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:text-violet-400 hover:border-violet-400"
-  >
-    <IoMdHome className="mr-2 text-violet-400 hover:text-violet-700" /> Volunteer
-  </a>
-</li>
+          <li className="flex">
+            <a
+              style={{ textDecoration: "none" }}
+              rel="noopener noreferrer"
+              href="/profile"
+              className="flex items-center px-4 my-auto text-lg text-white transition ease-in-out delay-150 border-b-2 border-transparent hover:text-violet-400 hover:border-violet-400"
+            >
+              <CgProfile className="mr-2 text-xl text-violet-300" /> Profile
+            </a>
+          </li>
+          <li className="flex">
+            <a
+              rel="noopener noreferrer"
+              style={{ textDecoration: "none" }}
+              href="/volunteer"
+              className="flex items-center px-4 my-auto text-lg text-white transition ease-in-out delay-150 border-b-2 border-transparent hover:text-violet-400 hover:border-violet-400"
+            >
+              <MdOutlineVolunteerActivism className="mr-2 text-xl text-violet-300" />
+              Volunteer
+            </a>
+          </li>
         </ul>
         <div className="items-center flex-shrink-0 hidden lg:flex">
-        <Link to="/Signup">
-			<button className="self-center px-8 py-3 rounded " onClick={handleclick}> Logout</button>
-			</Link>	
-			<Link to="/Login">
-      <button className="self-center px-8 py-3 font-semibold rounded bg-violet-400 text-gray-900"> Login   </button>
-	  </Link>
+          <Link to="/Signup">
+            <button
+              className="self-center px-8 py-3 text-lg rounded hover:text-blue-300"
+              onClick={handleclick}
+            >
+              {" "}
+              Logout
+            </button>
+          </Link>
+          <Link to="/Login">
+            <button className="self-center px-4 py-2 text-lg font-semibold text-black rounded bg-violet-400">
+              {" "}
+              Login{" "}
+            </button>
+          </Link>
         </div>
         <button className="p-4 lg:hidden">
           {/* <svg
@@ -125,7 +140,7 @@ const Header = () => {
           </svg> */}
         </button>
       </div>
-      <ToastContainer/>
+      <ToastContainer />
     </header>
   );
 };
