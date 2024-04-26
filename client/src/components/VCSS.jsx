@@ -4,8 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from './V.module.css'
 const VCSS = ({ event }) => {
   const navigate = useNavigate();
-  const randomNumber = Math.floor(Math.random() * 2);
-  const images=['../public/home/ngo2.jpeg','../public/home/ngo1.jpeg']
+  
+  const images=['../public/home/ngo2.jpeg','../public/home/ngo1.jpeg','../public/home/girlchildedu.webp','../public/home/ngo3.jpeg','../public/home/ngo4.jpeg','../public/home/mental_health.webp','../public/home/women.jpeg']
+  const randomNumber = Math.floor(Math.random() * 7);
   return (
     <div className="equal-height-card">
     <Card
@@ -17,7 +18,7 @@ const VCSS = ({ event }) => {
     >
       <CardBody>
         <div className={styles.a}>
-        <Card.Img src={images[randomNumber]}   variant="top" 
+        <Card.Img src={images[randomNumber]}    variant="top" 
         className={styles.b} />
         </div>
 
