@@ -16,9 +16,9 @@ export const AdminEvent = () => {
     const getDetails = async () => {
         try {
             const { data } = await getParticipants(eventId);
-            console.log(data.participants);
             setDetails(data);
             setList(data.participants);
+            console.log(list);
         } catch (error) {
             console.error('Error fetching event details:', error);
         }
@@ -63,17 +63,23 @@ export const AdminEvent = () => {
                                     <Col>Location: {Details.location}</Col>
                                 </Row>
                             </ListGroupItem>
-                            <ListGroupItem className="d-flex justify-content-center">
-                                Participants:
-                                {list.map((e)=>(
+                            <ListGroupItem>
+                                <Row>
+                                    <Col>Participants:</Col>
+                                </Row>
+                            </ListGroupItem>
+                            <ListGroup>
+                                {list.map((e)=>{
+                                    return(
                                     <ListGroupItem key={e._id}>
                                        <Row>
                                            <Col>{e.fistname}</Col>
                                        </Row>
                                    </ListGroupItem>
-                                ))}
+                                    )
+                                })}
+                            </ListGroup>
                                 
-                            </ListGroupItem>
                         </ListGroup>
                         <Button className="btn-block" type="button"  >
                                     Mark As Done
