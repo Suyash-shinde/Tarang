@@ -1,5 +1,5 @@
 import axios from "axios";
-import { adminRegisterRoute, getDetailsRoute, getEventsRoute, getParticipantsRoute, logoutRoute, myEventsRoute, newEventRoute, participateRoute } from "./APIRoutes.js";
+import { adminRegisterRoute, getDetailsRoute, getEventsRoute, getParticipantsRoute, getPastEventsRoute, logoutRoute, myEventsRoute, newEventRoute, participateRoute, toggleDoneRoute } from "./APIRoutes.js";
 import { refreshTokenRoute,adminLoginRoute } from "./APIRoutes.js";
 const api = axios.create({
     baseURL: "http://localhost:5173",
@@ -19,6 +19,8 @@ export const getEventDetail=(eventId)=>api.get(`${getDetailsRoute}/${eventId}`);
 export const enterEvent=(data)=>api.post(participateRoute,data);
 export const getNGOEvents=(data)=>api.post(myEventsRoute,data);
 export const getParticipants=(eventId)=>api.get(`${getParticipantsRoute}/${eventId}`);
+export const toggleDone=(data)=>api.post(toggleDoneRoute, data);
+export const getNGOPast=(data)=>api.post(getPastEventsRoute,data);
 api.interceptors.response.use(
     (config)=>{
         return config;

@@ -11,3 +11,5 @@ export const getDetailsRoute=`${host}/event`;
 export const participateRoute=`${host}/participate`;
 export const myEventsRoute=`${host}/myevents`;
 export const getParticipantsRoute=`${host}/admin`;
+export const toggleDoneRoute=`${host}/event/done`;
+export const getPastEventsRoute=`${host}/pastevents`;

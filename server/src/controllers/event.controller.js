@@ -100,9 +100,15 @@ export const handleEntry=async(req,res,next)=>{
 export const getNGOEvents = async(req,res,next)=>{
     try {
         const {user} = req.body;
+
         const findOwner = await Organiser.findById(user._id).populate('events').exec();
-        const events = findOwner.events;
-        console.log(findOwner);
+        var events=[];
+        findOwner.events.forEach((e)=>{
+            if(e.expired===false){
+                events.push(e);
+            }
+        })
+        console.log(events);
         return res.json({
             msg:"returned all NGO events",
             status:true,
@@ -119,5 +125,39 @@ export const participantsList = async(req,res,next)=>{
         return res.json(event);
     } catch (error) {
         next(error);
+    }
+}
+export const toggleDone=async(req,res,next)=>{
+    try {
+        const {eventId} = req.body;
+        const findE = await Event.findById(eventId);
+        findE.expired=true;
+        findE.save({validateBeforeSave:false});
+        return res.json({
+            msg:"Event post is changed to past events",
+        })
+    } catch (error) {
+        next(error);
+    }
+}
+
+export const getPast=async(req,res,next)=>{
+    try {
+        const {user}=req.body;
+        const findOwner = await Organiser.findById(user._id).populate('events').exec();
+        var events=[];
+        findOwner.events.forEach((e)=>{
+            if(e.expired===true){
+                events.push(e);
+            }
+        })
+        console.log(events);
+        return res.json({
+            msg:"returned all NGO events",
+            status:true,
+            events,
+        })
+    } catch (error) {
+        next(error)
     }
 }

@@ -15,6 +15,7 @@ import { ParticipatePage } from "./components/ParticipatePage";
 import { AdminBase } from "./components/AdminBase";
 import { AdminLive } from "./components/AdminLive";
 import { AdminEvent } from "./components/AdminEvent";
+import { AdminPast } from "./components/AdminPast";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path="/participatepage" element={<ParticipatePage/>}/>
           <Route path="/adminbase" element={<AdminBase/>}/>
           <Route path="/adminlive" element={<AdminLive/>}/>
+          <Route path="/adminpast" element={<AdminPast/>}/>
           <Route path="/admin/:id" element={<AdminEvent/>}/>
         </Routes>
       </BrowserRouter>

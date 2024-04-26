@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getParticipants } from '../utils/Api.post';
+import { getParticipants, toggleDone } from '../utils/Api.post';
 import { Row, Col, Image, Card, Button, ListGroup, ListGroupItem, Container, Toast } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import Navbar from './Navbar';
@@ -23,7 +23,10 @@ export const AdminEvent = () => {
             console.error('Error fetching event details:', error);
         }
     };
-
+    const handleDone =async()=>{
+        const {data}= await toggleDone({eventId});
+        toast(data.msg);
+    } 
     
 
     useEffect(() => {
@@ -68,20 +71,14 @@ export const AdminEvent = () => {
                                     <Col>Participants:</Col>
                                 </Row>
                             </ListGroupItem>
-                            <ListGroup>
-                                {list.map((e)=>{
-                                    return(
-                                    <ListGroupItem key={e._id}>
-                                       <Row>
-                                           <Col>{e.fistname}</Col>
-                                       </Row>
-                                   </ListGroupItem>
-                                    )
-                                })}
-                            </ListGroup>
+                            <ListGroupItem>
+                                {list.map((e)=>(
+                                    <div key={e._id}>{e.firstname}</div>
+                                ))}
+                           </ListGroupItem>
                                 
                         </ListGroup>
-                        <Button className="btn-block" type="button"  >
+                        <Button className="btn-block" type="button"  onClick={handleDone}>
                                     Mark As Done
                                 </Button>
                     </Card>
