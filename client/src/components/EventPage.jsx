@@ -8,6 +8,7 @@ import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { toastOptions } from '../utils/Toastify.js';
 
+
 export const EventPage = () => {
     const [Details, setDetails] = useState({});
     const { id: eventId } = useParams();
@@ -22,7 +23,8 @@ export const EventPage = () => {
             console.error('Error fetching event details:', error);
         }
     };
-
+    const randomNumber = Math.floor(Math.random() * 2);
+    const images=['../public/home/ngo2.jpeg','../public/home/ngo1.jpeg']
     useEffect(() => {
         getDetails();
     }, [eventId]);
@@ -45,12 +47,12 @@ export const EventPage = () => {
                 <div>
                     <Row>
                         <Col md={5}>
-                            <Image src="../public/home/ngo2.jpeg" fluid />
+                            <Image src={images[randomNumber]} fluid />
                         </Col>
                         <Col md={4}>
                             <ListGroup variant="flush">
                                 <ListGroupItem>
-                                    <h3>{Details.title}</h3>
+                                    <h3>{Details.title }</h3>
                                 </ListGroupItem>
                                 <ListGroupItem>Description {Details.description}</ListGroupItem>
                             </ListGroup>

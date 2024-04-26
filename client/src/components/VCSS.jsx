@@ -1,10 +1,13 @@
 import React from "react";
 import { Card, CardBody, CardText } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-
+import styles from './V.module.css'
 const VCSS = ({ event }) => {
   const navigate = useNavigate();
+  const randomNumber = Math.floor(Math.random() * 2);
+  const images=['../public/home/ngo2.jpeg','../public/home/ngo1.jpeg']
   return (
+    <div className="equal-height-card">
     <Card
       key={event._id}
       onClick={() => {
@@ -13,7 +16,10 @@ const VCSS = ({ event }) => {
       className="my-3 p-3 rounded"
     >
       <CardBody>
-        <Card.Img src="../public/home/ngo2.jpeg" variant="top" />
+        <div className={styles.a}>
+        <Card.Img src={images[randomNumber]}   variant="top" 
+        className={styles.b} />
+        </div>
 
         <Card.Title
           as="div"
@@ -23,6 +29,7 @@ const VCSS = ({ event }) => {
         </Card.Title>
       </CardBody>
     </Card>
+    </div>
   );
 };
 
