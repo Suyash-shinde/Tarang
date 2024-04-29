@@ -54,7 +54,7 @@ export const EventPage = () => {
                                 <ListGroupItem>
                                     <h3>{Details.title }</h3>
                                 </ListGroupItem>
-                                <ListGroupItem>Description {Details.description}</ListGroupItem>
+                                <ListGroupItem>Description:  {Details.description}</ListGroupItem>
                             </ListGroup>
                         </Col>
                         <Col md={3}>
